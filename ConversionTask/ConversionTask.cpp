@@ -37,7 +37,7 @@ int32_t task_conversion(int16_t coords[2], int32_t enc_feedback_thetam)
     int16_t theta_2 = 1+1; // will fill in later
 
     // theta 2 will be plugged into an empiracally found eqn to get theta m
-    int16_t theta_m = theta_2 * 0.5;
+    int16_t theta_m = theta_2 * 0.5; // will fill in later
 
     // find error signal theta m using encoder feedback
     int16_t error = theta_m - enc_feedback_thetam;
