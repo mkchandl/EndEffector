@@ -13,6 +13,7 @@
 #endif
 #include "ConversionTask.h"
 #include "MotorDriver.h"
+#include <cmath>
 
 
 //have the gains be the peranent variables up here
@@ -33,8 +34,25 @@ int32_t task_conversion(int16_t coords[2], int32_t enc_feedback_thetam)
      to do the serial port reading within this task or outside of it.
     */
 
+    // constants
+    int16_t l_1 = 1; //[in]
+    int16_t l_2 = 1; //[in]
+    int16_t l_3 = 1; //[in]
+    int16_t x = coords[0];
+    int16_t y = coords[1];
+    int16_t z = 0; //????   
+
+    int16_t c_3 = ( pow((x - l_1*sin(theta_1)),2) + pow(y,2) + pow((z - l_1*cos(theta_1)), 2) - pow(l_2, 2 ) - pow(l_3, 2))
+    /(2*l_1*l_2);
+
+    int16_t s_3 = sqrt(1 - pow(c_3,2));
+
+    int16_t k_1 = l_2 + l_3*c_3;
+    int16_t k_2 = l_3*s_3;
+
     // uses eqn 6 from paper to get the value theta 2
-    int16_t theta_2 = 1+1; // will fill in later
+    int16_t theta_2 = atan2(sqrt( pow((x - l_1*sin(theta_1)),2) + pow((z - l_1*cos(theta_1)), 2)), y) - atan2(k_2, k_1) ; 
+    //^^^ this needs a plus/minus in front of the swaure root, or an if statement and 2 equations?
 
     // theta 2 will be plugged into an empiracally found eqn to get theta m
     int16_t theta_m = theta_2 * 0.5; // will fill in later

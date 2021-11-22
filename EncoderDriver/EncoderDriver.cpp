@@ -65,3 +65,5 @@ STM32Encoder::STM32Encoder (TIM_TypeDef* timer, uint8_t pin1, uint8_t pin2)
     timer->SMCR |= TIM_SMCR_SMS_0 | TIM_SMCR_SMS_1;
     timer->CR1 |= TIM_CR1_CEN;
 }
+
+int32_t 
