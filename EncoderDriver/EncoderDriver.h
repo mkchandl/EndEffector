@@ -23,6 +23,8 @@
  *           it to update a position count with a large enough bit width that
  *           the full position reading does not overflow.
  * 
+ *           this is a 256 cpr encoder
+ * 
  *           So far this class has been tested with the following timers and 
  *           pins on an STM32L476RG:
  *           * Timer @c TIM2 using pins @c PA0 and @c PA1
