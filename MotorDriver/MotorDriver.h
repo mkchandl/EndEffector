@@ -21,8 +21,6 @@ protected:
     uint8_t _sleep;
     uint8_t _IN1A;
     uint8_t _IN2A;
-    uint8_t _IN1B;
-    uint8_t _IN2B;
     uint8_t _nFault;
 
 
@@ -30,14 +28,13 @@ protected:
 
 public:
     //constructor
-    MotorDriver(uint8_t sleep, uint8_t IN1A, uint8_t IN2A, uint8_t IN1B, uint8_t IN2B, uint8_t nFault);
+    MotorDriver(uint8_t sleep, uint8_t IN1A, uint8_t IN2A, uint8_t nFault);
     
     // QUESTION which methods need to return something other than void
 
     void enable(void); // sets sleep pin high
     void disable(void); // will set sleep pin low
-    void set_duty1(uint16_t duty1); // will set duty of motor. duty between 0 and 255
-    void set_duty2(uint16_t duty2);
+    void set_duty(uint16_t duty1); // will set duty of motor. duty between 0 and 255
 };
 
 // start with really low conrol gains and then slowly increase
