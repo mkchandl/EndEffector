@@ -36,34 +36,33 @@ int32_t SerialComm::read(void)
 {
     if (Serial.available() > 0)
     {
-        //char buffer[2];
-        //char finger = Serial.readBytes(buffer, 1);
-        //if (finger == "P")
-        if ((Serial.readString()) == "P")
+        char buf[2];
+        int rlen = Serial.readBytes(buf, 1);
+        if(rlen > 0); // originally if(Serial.readBytes(buffer, 1)!=0) but was going into for loop when buffer = {null}
         {
-            Serial.print("entered if finger = P loop");
-            x1 = Serial.parseInt();
+            // Serial.print("read into buffer"); 
+            Serial.print("buffer:"); // THis is showing buffer: NULL so its not successfully reading into buffer 
+            Serial.println(buf[0]);
+            if (buf[0] == 'P')
+            {
+                Serial.print("entered if = P loop");
+                x1 = Serial.parseInt();
             
-            y1 = Serial.parseInt();
+                y1 = Serial.parseInt();
             
-            t1 = Serial.parseInt();
+                t1 = Serial.parseInt();
+            }
 
-            return x1;
-            return y1;
-            return t1;
-
-            Serial.print("x1:");
-            Serial.println(x1);
-            Serial.print("y1:");
-            Serial.println(y1);
-            Serial.print("t1:");
-            Serial.println(t1);
+            else if (buf[0] == 'T')
+            {
+                x2 = Serial.read();
+                y2 = Serial.read();
+                t2 = Serial.read();
+                return x1;
+                return y1;
+                return t1;
+            }
         }
-        else if ((Serial.readString()) == "T")
-        {
-            x2 = Serial.read();
-            y2 = Serial.read();
-            t2 = Serial.read();
-        }
+        
     }
-}
+}   
