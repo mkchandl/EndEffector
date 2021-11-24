@@ -48,7 +48,7 @@ int32_t SerialComm::read(void)
                 Serial.print("entered if = P loop");
                 x1 = Serial.parseInt();
             
-                y1 = Serial.parseInt();
+                y1 = Serial.parseInt(); 
             
                 t1 = Serial.parseInt();
             }
