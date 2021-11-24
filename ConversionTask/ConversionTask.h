@@ -6,4 +6,5 @@
  *  @date    18 Nov 2021 Original file
  */
 
-int32_t task_conversion(int16_t x, int16_t y);
+#include <Arduino.h>
+int32_t task_conversion(int16_t coords[2], int16_t time_response[2], int32_t enc_feedback_thetam, Print& device = Serial);

@@ -10,24 +10,27 @@ void setup() {
   // put your setup code here, to run once:
   //set up serial port
   Serial.begin (115200);
-  delay (2000);
-  Serial << endl << endl << "Hello" << endl; // send a message to test serial connection
-  delay (2000);
+  // delay (2000);
+  // Serial << endl << endl << "Hello" << endl; // send a message to test serial connection
+  // delay (2000);
 
   // create serial comm class object
   SerialComm ser_obj;
-  Serial <<"P" << endl;
-  Serial <<", " ;
-  Serial << 3;
-  Serial <<", " ;
-  Serial.print(4);
-  Serial <<", " ;
-  Serial.println(5);
+  //Serial <<"P" ;
+  //Serial <<", " ;
+ // Serial << 3;
+  //Serial <<", " ;
+  //Serial.print(4);
+  //Serial <<", " ;
+  //Serial.println(5);
 
 
+  for (;;)
+  {
+    ser_obj.read();
+    delay(2000);
+  }
   
-  ser_obj.read();
-
 }
 
 void loop() {
