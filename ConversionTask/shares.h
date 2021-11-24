@@ -13,8 +13,8 @@
 #include "taskqueue.h"
 #include "taskshare.h"
 
-// A share which holds a counter of how many times a simulated event occurred
-extern Share<bool> begin_recording;
+// A share which holds a bool of whether or not to shutoff the motors
+extern Share<int> motor_shutoff;
 
 // A queue which holds encoder1 positions
 extern Queue<uint16_t> data_queue1;

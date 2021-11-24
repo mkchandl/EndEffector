@@ -13,7 +13,7 @@
 #include "FSR.h"
 
 // A share which holds a counter of how many times a simulated event occurred
-extern Share<bool> motor_shutoff;
+extern Share<int> motor_shutoff;
 
 // A queue which triggers a task to print the count at certain times
 // extern Queue<uint16_t> data_queue;

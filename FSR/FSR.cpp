@@ -17,6 +17,7 @@ FSR::FSR(int FSR_pin)
 {
     // constructor
     _FSR_pin = FSR_pin;
+    motor_shutoff.put(0);
 }
 
 
@@ -31,7 +32,7 @@ bool FSR::checkforcontact(void)
     int fsrReading = analogRead(_FSR_pin); // will read between 0 (no contact) and 1023 (max force)
     if (fsrReading > 1023/2) // 20lbs max so 1023/2 should be 10lbs
     {
-        motor_shutoff.put(true);
+        motor_shutoff.put(1);
     }
 }
 

@@ -18,10 +18,10 @@
 #include "shares.h"
 
 // Will both fingers have the same lengths? may need to add other finger dims here and then change them in eqn below
-static int8_t l1 = 1.67; // inches
-static int8_t l2 = 2; //in
-static int8_t l3 = 1.67;
-static int theta_1 = 45; // degrees
+const int8_t l1 = 1.67; // inches
+const int8_t l2 = 2; //in
+const int8_t l3 = 1.67;
+const int theta_1 = 45; // degrees
 
 
 
@@ -44,12 +44,22 @@ static int theta_1 = 45; // degrees
 // what would need to be put in here if we want to read from serial within the funct
 int32_t task_conversion(int Kp, int Kd)
 {
-    // create motor object
+    /// create motor objects
     MotorDriver mot_obj1(PA15, D5, D4, PB2);
     MotorDriver mot_obj2(PA15, D14, D15, PB2);
+    /// enable both motors
+    mot_obj1.enable();
+    mot_obj2.enable();
 
     for(;;)
     {
+        /// check to make sure the fsr hasnt triggered a shutoff
+        int _motor_shutoff = motor_shutoff.get();
+        if (_motor_shutoff == 1)
+        {
+            mot_obj1.disable();
+            mot_obj2.disable();
+        }
 
         // takes in x and y by reading from serial port?
         /* this isnt right cause 
@@ -62,17 +72,17 @@ int32_t task_conversion(int Kp, int Kd)
         serial_obj.read(); // grab the newest coords and time stamps
         int16_t x1 = coords1[0];
         int16_t y1 = coords1[1];
-        int16_t t1 = coords1[2]
+        int16_t t1 = coords1[2];
         int16_t x2 = coords2[0];
         int16_t y2 = coords2[1];
-        int16_t t2 = coords2[2]
+        int16_t t2 = coords2[2];
         int16_t delta_t1 = t1 - old_timestamp1; //delta for the thetam_d
         int16_t delta_t2 = t2 - old_timestamp2; //delta for the thetam_d
 
 
 
         // uses eqn 6 from paper to get the value theta 2
-        int16_t c_3 = ( pow((x - l1*sin(theta_1)),2) + pow(y,2) + pow((z - l1*cos(theta_1)), 2) - pow(l_2, 2 ) - pow(l_3, 2))
+        int16_t c_3 = ( pow((x1 - l1*sin(theta_1)),2) + pow(y1,2) + pow((0 - l1*cos(theta_1)), 2) - pow(l2, 2 ) - pow(l3, 2))
         /(2*l1*l2);
         int16_t s_3 = sqrt(1 - pow(c_3,2));
         int16_t k_1 = l2 + l3*c_3;
