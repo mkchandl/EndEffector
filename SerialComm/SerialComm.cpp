@@ -36,9 +36,10 @@ int32_t SerialComm::read(void)
 {
     if (Serial.available() > 0)
     {
-        char buffer[2];
-        char finger = Serial.readBytes(buffer, 1);
-        if (finger == 'P')
+        //char buffer[2];
+        //char finger = Serial.readBytes(buffer, 1);
+        //if (finger == "P")
+        if ((Serial.readString()) == "P")
         {
             Serial.print("entered if finger = P loop");
             x1 = Serial.parseInt();
@@ -47,6 +48,10 @@ int32_t SerialComm::read(void)
             
             t1 = Serial.parseInt();
 
+            return x1;
+            return y1;
+            return t1;
+
             Serial.print("x1:");
             Serial.println(x1);
             Serial.print("y1:");
@@ -54,7 +59,7 @@ int32_t SerialComm::read(void)
             Serial.print("t1:");
             Serial.println(t1);
         }
-        else if (finger == 'T')
+        else if ((Serial.readString()) == "T")
         {
             x2 = Serial.read();
             y2 = Serial.read();
