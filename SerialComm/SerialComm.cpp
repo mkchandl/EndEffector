@@ -34,33 +34,64 @@ SerialComm::SerialComm(void)
  */
 int32_t SerialComm::read(void)
 {
+    Serial.println("waiting for char");
     if (Serial.available() > 0)
     {
         char buf[2];
         int rlen = Serial.readBytes(buf, 1);
+        // Serial.println(rlen);
+        char buf_var = buf[0];
+        // Serial.println(buf_var);
         if(rlen > 0); // originally if(Serial.readBytes(buffer, 1)!=0) but was going into for loop when buffer = {null}
         {
             // Serial.print("read into buffer"); 
-            Serial.print("buffer:"); // THis is showing buffer: NULL so its not successfully reading into buffer 
-            Serial.println(buf[0]);
-            if (buf[0] == 'P')
+            // Serial.print("buffer:"); // THis is showing buffer: NULL so its not successfully reading into buffer 
+            // Serial.println(buf[0]);
+            if (buf[0] == 'p')
             {
-                Serial.print("entered if = P loop");
+                Serial.println("entered if = P loop"); // for testing
+                delay(2000);
+                Serial.print("# char available to read:");
+                Serial.println(Serial.available());
                 x1 = Serial.parseInt();
-            
-                y1 = Serial.parseInt(); 
-            
+                Serial.print("just read x1: ");
+                Serial.println(x1);
+                y1 = Serial.parseInt();
+                Serial.print("just read y1: ");
+                Serial.println(y1);
                 t1 = Serial.parseInt();
+                Serial.print("just read t1: ");
+                Serial.println(t1);
+
+                int16_t coords1[3] = {x1, y1, t1};
+                Serial.print("coords1[3]: ");
+                Serial.println(coords1[0]);
+                Serial.println(coords1[1]);
+                Serial.println(coords1[2]);
+                return coords1[3];
             }
 
-            else if (buf[0] == 'T')
+            else if (buf[0] == 't')
             {
-                x2 = Serial.read();
-                y2 = Serial.read();
-                t2 = Serial.read();
-                return x1;
-                return y1;
-                return t1;
+                Serial.println("entered if = t loop"); // for testing
+                delay(2000);
+                Serial.print("# char available to read:");
+                Serial.println(Serial.available());
+                x2 = Serial.parseInt();
+                Serial.print("just read x2: ");
+                Serial.println(x2);
+                y2 = Serial.parseInt();
+                Serial.print("just read y2: ");
+                Serial.println(y2);
+                t2 = Serial.parseInt();
+                Serial.print("just read t2: ");
+                Serial.println(t2);
+                int16_t coords2[3] = {x2, y2, t2};
+                Serial.print("coords2[3]: ");
+                Serial.println(coords2[0]);
+                Serial.println(coords2[1]);
+                Serial.println(coords2[2]);
+                return coords2[3];
             }
         }
         

@@ -23,12 +23,13 @@ void setup() {
   //Serial.print(4);
   //Serial <<", " ;
   //Serial.println(5);
+  Serial.setTimeout(10000);
 
 
   for (;;)
   {
     ser_obj.read();
-    delay(2000);
+    // delay(2000);
   }
   
 }
