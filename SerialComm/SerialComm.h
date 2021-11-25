@@ -27,6 +27,6 @@ class SerialComm
 
     public: 
         SerialComm(void); // constructor. may need params passed in
-        int32_t read(void); // method that reads from serial port. 
+        void read(void); // method that reads from serial port. 
         void write(void); // writes to the serial port
 };       

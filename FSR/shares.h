@@ -10,13 +10,23 @@
 #ifndef _SHARES_H_
 #define _SHARES_H_
 
-#include "FSR.h"
+#include "taskqueue.h"
+#include "taskshare.h"
 
-// A share which holds a counter of how many times a simulated event occurred
+// A share which holds a bool of whether or not to shutoff the motors
 extern Share<int> motor_shutoff;
 
-// A queue which triggers a task to print the count at certain times
-// extern Queue<uint16_t> data_queue;
+// A queue which holds encoder1 positions
+extern Queue<uint16_t> data_queue1;
+
+// A queue which holds encoder2 positions
+extern Queue<uint16_t> data_queue2;
+
+// A queue which holds finger 1 coordinates
+extern Queue<uint16_t> coord1;
+
+// A queue which holds finger 2 coordinates
+extern Queue<uint16_t> coord2;
 
 
 #endif // _SHARES_H_

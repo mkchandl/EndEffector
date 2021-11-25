@@ -9,6 +9,7 @@
 #include <Arduino.h> 
 #include <PrintStream.h>
 #include "SerialComm.h"
+#include "shares.h"
 
 /** @brief   Constructor for the serial comm class
  *  @details This constructor intializes the class object variables
@@ -32,9 +33,9 @@ SerialComm::SerialComm(void)
  *           array
  *  @return  a 1x4 array with finger indentification, x and y coord, and time stamp
  */
-int32_t SerialComm::read(void)
+void SerialComm::read(void)
 {
-    Serial.println("waiting for char");
+    // Serial.println("waiting for char");
     if (Serial.available() > 0)
     {
         char buf[2];
@@ -42,7 +43,7 @@ int32_t SerialComm::read(void)
         // Serial.println(rlen);
         char buf_var = buf[0];
         // Serial.println(buf_var);
-        if(rlen > 0); // originally if(Serial.readBytes(buffer, 1)!=0) but was going into for loop when buffer = {null}
+        if(rlen > 0) // originally if(Serial.readBytes(buffer, 1)!=0) but was going into for loop when buffer = {null}
         {
             // Serial.print("read into buffer"); 
             // Serial.print("buffer:"); // THis is showing buffer: NULL so its not successfully reading into buffer 
@@ -63,12 +64,11 @@ int32_t SerialComm::read(void)
                 Serial.print("just read t1: ");
                 Serial.println(t1);
 
-                int16_t coords1[3] = {x1, y1, t1};
-                Serial.print("coords1[3]: ");
-                Serial.println(coords1[0]);
-                Serial.println(coords1[1]);
-                Serial.println(coords1[2]);
-                return coords1[3];
+                coord1.put(x1);
+                coord1.put(y1);
+                coord1.put(t1);
+
+
             }
 
             else if (buf[0] == 't')
@@ -86,12 +86,11 @@ int32_t SerialComm::read(void)
                 t2 = Serial.parseInt();
                 Serial.print("just read t2: ");
                 Serial.println(t2);
-                int16_t coords2[3] = {x2, y2, t2};
-                Serial.print("coords2[3]: ");
-                Serial.println(coords2[0]);
-                Serial.println(coords2[1]);
-                Serial.println(coords2[2]);
-                return coords2[3];
+
+                coord2.put(x2);
+                coord2.put(y2);
+                coord2.put(t2);
+
             }
         }
         
