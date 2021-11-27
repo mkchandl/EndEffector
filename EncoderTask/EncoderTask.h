@@ -6,7 +6,13 @@
  *  @author  Michelle Chandler
  *  @date    18 Nov 2021 Original file
  */
-
+#include <iostream>
 #include <Arduino.h>
-void task_encoder(void);
+#include <PrintStream.h>
+#if (defined STM32L4xx || defined STM32F4xx)
+    #include <STM32FreeRTOS.h>
+#endif
+#include "shares.h"
+
+void task_encoder(void* p_params);
 

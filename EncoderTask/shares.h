@@ -12,6 +12,8 @@
 
 #include "taskqueue.h"
 #include "taskshare.h"
+ 
+using std::endl; // from stack overflow to fix compiler errors
 
 // A share which holds a bool of whether or not to shutoff the motors
 extern Share<int> motor_shutoff;
@@ -23,10 +25,10 @@ extern Queue<uint16_t> data_queue1;
 extern Queue<uint16_t> data_queue2;
 
 // A queue which holds finger 1 coordinates
-extern Queue<uint16_t> coord1;
+// extern Queue<uint16_t> coord1;
 
 // A queue which holds finger 2 coordinates
-extern Queue<uint16_t> coord2;
+// extern Queue<uint16_t> coord2;
 
 
 #endif // _SHARES_H_

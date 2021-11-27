@@ -20,13 +20,13 @@ extern Share<int> motor_shutoff;
 extern Queue<uint16_t> data_queue1;
 
 // A queue which holds encoder2 positions
-extern Queue<uint16_t> data_queue2;
+extern Queue<uint16_t> data_queue1;
 
 // A queue which holds finger 1 coordinates
-extern Queue<uint16_t> coord1;
+// extern Queue<uint16_t> coord1;
 
 // A queue which holds finger 2 coordinates
-extern Queue<uint16_t> coord2;
+// extern Queue<uint16_t> coord2;
 
 
 #endif // _SHARES_H_
