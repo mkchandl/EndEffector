@@ -31,7 +31,7 @@ protected:
 public:
     FSR(int FSR_pin); // constructor. may need to input FSR pin(s) as parameters
 
-    bool checkforcontact(void);     // this method checks to see if the fingers r in contact
+    void checkforcontact(void);     // this method checks to see if the fingers r in contact
 
 
 };

@@ -29,7 +29,7 @@ FSR::FSR(int FSR_pin)
  *  @details This method checks for any kind of contact with the FSR and
  *           shuts off the motors if the force is too great.
  */
-bool FSR::checkforcontact(void)
+void FSR::checkforcontact(void)
 {
     // be constantly checking for contact
     // once contact is detected, bool contact = True

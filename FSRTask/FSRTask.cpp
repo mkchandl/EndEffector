@@ -15,13 +15,16 @@
 #include "FSRTask.h"
 #include "FSR.h"
 
-void FSRTask(void)
+void FSRTask(void* p_params)
 {
+    (void)p_params; 
+    /// Create FSR object
     FSR fsr_obj(A5);
 
     for(;;)
     {
         fsr_obj.checkforcontact();
+        Serial.println("checking for contact");
     }
 
 }
