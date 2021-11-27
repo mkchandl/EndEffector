@@ -5,9 +5,13 @@
  *  @date  2021-Nov-18 Original file
  */
 
-#include <Arduino.h>
+#include <Arduino.h> 
 #include <PrintStream.h>
+#if (defined STM32L4xx || defined STM32F4xx)
+    #include <STM32FreeRTOS.h>
+#endif
 #include "FSR.h"
+#include "shares.h"
 
 /** @brief   Create a FSR object
  *  @details This constructor saves the FSR pin 

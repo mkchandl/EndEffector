@@ -10,6 +10,9 @@
  *  @details This class represents the FSR that controls emergency shutoff of 
  *           the motors to protect the physical system
  */
+#if (defined STM32L4xx || defined STM32F4xx)
+    #include <STM32FreeRTOS.h>
+#endif
 #include "shares.h" // idk if i need this here
 #ifndef _FSR_H_ // idk what this is and if its necessary, 
 #define _FSR_H_// just included it bs its in shares.h

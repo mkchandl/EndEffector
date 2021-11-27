@@ -12,8 +12,6 @@
 #endif
 #include "FSR.h"
 
-#include <Arduino.h>
-
 void setup() {
   // put your setup code here, to run once:
   int FSR_pin = PA5;

@@ -23,6 +23,9 @@ const int8_t l2 = 2; //in
 const int8_t l3 = 1.67;
 const int theta_1 = 45; // degrees
 
+static int t1= 0;
+static int t2 = 0;
+
 
 
 //WILL INT16_T BE LARG ENOUGH FOR THESE VARIABLES?
@@ -51,6 +54,8 @@ int32_t task_conversion(int Kp, int Kd)
     mot_obj1.enable();
     mot_obj2.enable();
 
+    SerialComm serial_obj; // create serial object
+
     for(;;)
     {
         /// check to make sure the fsr hasnt triggered a shutoff
@@ -66,16 +71,16 @@ int32_t task_conversion(int Kp, int Kd)
         i currently have the x,y array as an input. would it be better
         to do the serial port reading within this task or outside of it.
         */
-        SerialComm serial_obj; // create serial object
-        int16_t old_timestamp1 = coords1[2]; // save old time stamps of last coords for finger 1
-        int16_t old_timestamp2 = coords2[2];
+        
+        static int16_t old_timestamp1 = t1; // save old time stamps of last coords for finger 1
+        static int16_t old_timestamp2 = t2;
         serial_obj.read(); // grab the newest coords and time stamps
-        int16_t x1 = coords1[0];
-        int16_t y1 = coords1[1];
-        int16_t t1 = coords1[2];
-        int16_t x2 = coords2[0];
-        int16_t y2 = coords2[1];
-        int16_t t2 = coords2[2];
+        int16_t x1 = serial_obj.return_x1();
+        int16_t y1 = serial_obj.return_y1();
+        int16_t t1 = serial_obj.return_t1();
+        int16_t x2 = serial_obj.return_x2();
+        int16_t y2 = serial_obj.return_y2();
+        int16_t t2 = serial_obj.return_t2();
         int16_t delta_t1 = t1 - old_timestamp1; //delta for the thetam_d
         int16_t delta_t2 = t2 - old_timestamp2; //delta for the thetam_d
 
@@ -104,8 +109,8 @@ int32_t task_conversion(int Kp, int Kd)
         int16_t error2 = theta_m2 - enc_feedback_thetam2;
 
         // convert from thetam to thetam_d by dividing by desired response time
-        int16_t thetam_d1 = theta_m1/delta_t1;
-        int16_t thetam_d2 = theta_m2/delta_t2;
+        int16_t thetam_d1 = error1/delta_t1;
+        int16_t thetam_d2 = error2/delta_t2;
 
         // give the thetam_d signal to controler
         int16_t proportional = Kp*thetam_d1;

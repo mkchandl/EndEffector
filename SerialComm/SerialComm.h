@@ -15,18 +15,16 @@
 class SerialComm
 {
     protected: 
-        int32_t coords1[4] = {1, 0, 0 ,0}; // array and variables for the coords and time stamp of finger 1
         int32_t x1;
         int32_t y1;
         int32_t t1;
 
-        int32_t coords2[4] = {2, 0, 0 ,0}; // array and variables for the coords and time stamp of finger 2
         int32_t x2;
         int32_t y2;
         int32_t t2;
 
     public: 
         SerialComm(void); // constructor. may need params passed in
-        void read(void); // method that reads from serial port. 
+        int16_t read(void); // method that reads from serial port. 
         void write(void); // writes to the serial port
 };       

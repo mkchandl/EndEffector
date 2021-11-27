@@ -8,8 +8,11 @@
 
 #include <Arduino.h> 
 #include <PrintStream.h>
+#if (defined STM32L4xx || defined STM32F4xx)
+    #include <STM32FreeRTOS.h>
+#endif
 #include "SerialComm.h"
-#include "shares.h"
+
 
 /** @brief   Constructor for the serial comm class
  *  @details This constructor intializes the class object variables
@@ -33,21 +36,15 @@ SerialComm::SerialComm(void)
  *           array
  *  @return  a 1x4 array with finger indentification, x and y coord, and time stamp
  */
-void SerialComm::read(void)
+int16_t SerialComm::read(void)
 {
     // Serial.println("waiting for char");
     if (Serial.available() > 0)
     {
         char buf[2];
         int rlen = Serial.readBytes(buf, 1);
-        // Serial.println(rlen);
-        char buf_var = buf[0];
-        // Serial.println(buf_var);
-        if(rlen > 0) // originally if(Serial.readBytes(buffer, 1)!=0) but was going into for loop when buffer = {null}
+        if(rlen > 0)
         {
-            // Serial.print("read into buffer"); 
-            // Serial.print("buffer:"); // THis is showing buffer: NULL so its not successfully reading into buffer 
-            // Serial.println(buf[0]);
             if (buf[0] == 'p')
             {
                 Serial.println("entered if = P loop"); // for testing
@@ -63,10 +60,11 @@ void SerialComm::read(void)
                 t1 = Serial.parseInt();
                 Serial.print("just read t1: ");
                 Serial.println(t1);
-
-                coord1.put(x1);
-                coord1.put(y1);
-                coord1.put(t1);
+                
+                int32_t coords1[3] = {x1, y1, t1};
+                return coords1[0];
+                return coords1[1];
+                return coords1[2];
 
 
             }
@@ -87,9 +85,10 @@ void SerialComm::read(void)
                 Serial.print("just read t2: ");
                 Serial.println(t2);
 
-                coord2.put(x2);
-                coord2.put(y2);
-                coord2.put(t2);
+                int32_t coords2[3] = {x2, y2, t2};
+                return coords2[0];
+                return coords2[1];
+                return coords2[2];
 
             }
         }
