@@ -36,7 +36,7 @@ SerialComm::SerialComm(void)
  *           array
  *  @return  a 1x4 array with finger indentification, x and y coord, and time stamp
  */
-int16_t SerialComm::read(void)
+void SerialComm::read(void)
 {
     // Serial.println("waiting for char");
     if (Serial.available() > 0)
@@ -60,11 +60,6 @@ int16_t SerialComm::read(void)
                 t1 = Serial.parseInt();
                 Serial.print("just read t1: ");
                 Serial.println(t1);
-                
-                int32_t coords1[3] = {x1, y1, t1};
-                return coords1[0];
-                return coords1[1];
-                return coords1[2];
 
 
             }
@@ -85,13 +80,38 @@ int16_t SerialComm::read(void)
                 Serial.print("just read t2: ");
                 Serial.println(t2);
 
-                int32_t coords2[3] = {x2, y2, t2};
-                return coords2[0];
-                return coords2[1];
-                return coords2[2];
-
             }
         }
         
     }
 }   
+
+int32_t SerialComm::return_x1(void)
+{
+    return x1;
+}
+
+int32_t SerialComm::return_y1(void)
+{
+    return y1;
+}
+
+int32_t SerialComm::return_t1(void)
+{
+    return t1;
+}
+
+int32_t SerialComm::return_x2(void)
+{
+    return x2;
+}
+
+int32_t SerialComm::return_y2(void)
+{
+    return y2;
+}
+
+int32_t SerialComm::return_t2(void)
+{
+    return t2;
+}
