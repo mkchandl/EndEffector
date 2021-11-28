@@ -12,6 +12,8 @@
     #include <STM32FreeRTOS.h>
 #endif
 #include "SerialComm.h"
+#include <fstream>
+#include <iostream>
 
 
 /** @brief   Constructor for the serial comm class
@@ -26,6 +28,8 @@ SerialComm::SerialComm(void)
     y2 = 0;
     x2 = 0;
     t2 = 0;
+
+    
 }
 
 
@@ -41,44 +45,55 @@ void SerialComm::read(void)
     // Serial.println("waiting for char");
     if (Serial.available() > 0)
     {
-        char buf[2];
-        int rlen = Serial.readBytes(buf, 1);
-        if(rlen > 0)
+        String string;
+        char term = ']';
+        string = Serial.readStringUntil(term);
+        string.replace(" ","");
+        int index = string.indexOf(',');
+        String finger = string.substring(1, index);
+        string = string.substring(index+1);
+        
         {
-            if (buf[0] == 'p')
+            if (finger.equals("p"))
             {
-                Serial.println("entered if = P loop"); // for testing
-                delay(2000);
-                Serial.print("# char available to read:");
-                Serial.println(Serial.available());
-                x1 = Serial.parseInt();
-                Serial.print("just read x1: ");
-                Serial.println(x1);
-                y1 = Serial.parseInt();
-                Serial.print("just read y1: ");
-                Serial.println(y1);
-                t1 = Serial.parseInt();
-                Serial.print("just read t1: ");
-                Serial.println(t1);
+                index = string.indexOf(',');
+                int x1 = string.substring(0, index).toInt();
+
+                string = string.substring(index+1);
+                int y1 = string.substring(0, index).toInt();
+
+                string = string.substring(index+1);
+                float t1 = string.toFloat();
+
+                // Serial.println("entered if = P loop"); // for testing
+                // delay(2000);
+                // Serial.print("# char available to read:");
+                // Serial.println(Serial.available());
+                // x1 = Serial.parseInt();
+                // Serial.print("just read x1: ");
+                // Serial.println(x1);
+                // y1 = Serial.parseInt();
+                // Serial.print("just read y1: ");
+                // Serial.println(y1);
+                // t1 = Serial.parseInt();
+                // Serial.print("just read t1: ");
+                // Serial.println(t1);
+
+
 
 
             }
 
-            else if (buf[0] == 't')
+            else if (finger.equals("t"))
             {
-                Serial.println("entered if = t loop"); // for testing
-                delay(2000);
-                Serial.print("# char available to read:");
-                Serial.println(Serial.available());
-                x2 = Serial.parseInt();
-                Serial.print("just read x2: ");
-                Serial.println(x2);
-                y2 = Serial.parseInt();
-                Serial.print("just read y2: ");
-                Serial.println(y2);
-                t2 = Serial.parseInt();
-                Serial.print("just read t2: ");
-                Serial.println(t2);
+                index = string.indexOf(',');
+                int x2 = string.substring(0, index).toInt();
+
+                string = string.substring(index+1);
+                int y2 = string.substring(0, index).toInt();
+
+                string = string.substring(index+1);
+                float t2 = string.toFloat();
 
             }
         }

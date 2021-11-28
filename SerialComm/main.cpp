@@ -5,6 +5,8 @@
     #include <STM32FreeRTOS.h>
 #endif
 #include "SerialComm.h"
+#include <fstream>
+#include <iostream>
  
 
 void setup() {
@@ -16,15 +18,67 @@ void setup() {
   SerialComm ser_obj;
 
   Serial.setTimeout(10000);
+  byte buf[4];
 
-
-
-  for (;;)
+  //std::ofstream myfile;
+  //myfile.open ("example.csv");
+  
+ // String string;
+  char term = ']';
+  for (int i = 0; i < 5; i++)
   {
-    ser_obj.read();
+    //string = Serial.readStringUntil(term);
+    //myfile << python;
+
     // delay(2000);
   }
+  Serial.end();
+  delay(10000);
+  String string = "['t', 360, 447, 4.043892860412598";
+
+  Serial.begin (115200);  
+
+  //remove the spaces
+  string.replace(" ","");
+  Serial.println(string);
+
+  // find location of first comma
+  int index = string.indexOf(',');
+  //get everything before that (this also gets rid of the bracket)
+  String finger = string.substring(1, index);
+  Serial.println(finger);
+
+  // now erase all that
+  string = string.substring(index+1);
+  Serial.println(string);
+
+  // repeat
+  index = string.indexOf(',');
+  int x = string.substring(0, index).toInt();
+  Serial.println(string);
+  Serial.println(x);
+
+  string = string.substring(index+1);
+  int y = string.substring(0, index).toInt();
+  Serial.println(string);
+  Serial.println(y);
+
+  string = string.substring(index+1);
+  float time = string.toFloat();
+  Serial.println(string);
+  Serial.println(time);
+
+
   
+  
+
+
+  for(;;)
+  {
+
+  }
+
+
 }
 
 void loop() {
