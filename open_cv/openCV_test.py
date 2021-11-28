@@ -71,6 +71,8 @@ while True:
 import cv2
 import mediapipe as mp
 import time
+import serial
+
 
 class handDetector():
     def __init__(self, mode = False, maxHands = 2, detectionCon = 0.5, trackCon = 0.5):
@@ -82,6 +84,7 @@ class handDetector():
         self.mpHands = mp.solutions.hands
         self.hands = self.mpHands.Hands(self.mode, self.maxHands, self.detectionCon, self.trackCon)
         self.mpDraw = mp.solutions.drawing_utils
+        self.lmlist = []
         
     def findHands(self,img, draw = True):
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -94,7 +97,7 @@ class handDetector():
                     self.mpDraw.draw_landmarks(img, handLms, self.mpHands.HAND_CONNECTIONS)
         return img
 
-    def findPosition(self, img, handNo = 0, draw = True):
+    def findPosition(self, img, time, handNo = 0, draw = True):
 
         lmlist = []
         if self.results.multi_hand_landmarks:
@@ -102,28 +105,38 @@ class handDetector():
             for id, lm in enumerate(myHand.landmark):
                 h, w, c = img.shape
                 cx, cy = int(lm.x * w), int(lm.y * h)
-                lmlist.append([id, cx, cy])
+                if id == 4:
+                    lmlist.append(['t', cx, cy, time])
+                elif id == 8:
+                    lmlist.append(['p', cx, cy, time])
                 if draw:
                     cv2.circle(img, (cx, cy), 3, (255, 0, 255), cv2.FILLED)
         return lmlist
+    
+detector = handDetector()
 
 def main():
+    startTime = time.time()
     pTime = 0
     cTime = 0
     cap = cv2.VideoCapture(0)
-    detector = handDetector()
+    
+    cereal = serial.Serial(port='COM3', baudrate=115273, timeout=1)
     
     while True:
         success, img = cap.read()
         img = detector.findHands(img)
-        lmlist = detector.findPosition(img)
-        if len(lmlist) != 0:
-            print(lmlist[4])
-            print(lmlist[20])
+        detector.lmlist = detector.findPosition(img, cTime)
+        if len(detector.lmlist) != 0:
+            print(detector.lmlist)
+            str1 = " ".join(map(str, detector.lmlist))
+            print(str1)
+            cereal.write(bytes(str1, 'utf-8'))
 
-        cTime = time.time()
+        cTime = time.time() - startTime
         fps = 1 / (cTime - pTime)
         pTime = cTime
+
 
         cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255), 3)
 
@@ -131,9 +144,19 @@ def main():
         cv2.waitKey(1)
 
 
+
+
 if __name__ == "__main__":
-    main()
 
-
-
+    while True: 
+        try:
+            main()
+        except KeyboardInterrupt:
+            print('Interupt Recognized')
+            print('please wait while data is saved')
+            with open ("data.csv", "w") as file:
+                for (a) in zip(detector.lmlist):
+                    file.write('{:}\r'.format(a))
+            print('data saved!')
+            break
 
