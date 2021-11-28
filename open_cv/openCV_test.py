@@ -121,6 +121,7 @@ def main():
     cTime = 0
     cap = cv2.VideoCapture(0)
     
+    """EDIT HERE FOR YOUR COM PORT"""
     cereal = serial.Serial(port='COM3', baudrate=115273, timeout=1)
     
     while True:
@@ -128,7 +129,7 @@ def main():
         img = detector.findHands(img)
         detector.lmlist = detector.findPosition(img, cTime)
         if len(detector.lmlist) != 0:
-            print(detector.lmlist)
+            #print(detector.lmlist)
             str1 = " ".join(map(str, detector.lmlist))
             print(str1)
             cereal.write(bytes(str1, 'utf-8'))
