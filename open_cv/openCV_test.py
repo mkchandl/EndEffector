@@ -100,9 +100,9 @@ class handDetector():
                 if id == 2 or id == 5:
                    xs, xy = int(lm.x * w), int(lm.y * h)
                 if id == 4:
-                    lmlist.append(['t', (cx - xs), (cy - xy), time])
+                    lmlist.append([2, (cx - xs), (cy - xy), time])
                 #elif id == 8:
-                    #lmlist.append(['p', cx, cy, time])
+                    #lmlist.append([3, cx, cy, time])
                 if draw:
                     cv2.circle(img, (cx, cy), 3, (255, 0, 255), cv2.FILLED)
         return lmlist
@@ -125,7 +125,7 @@ def main():
         if len(detector.lmlist) != 0:
             #print(detector.lmlist)
             str1 = " ".join(map(str, detector.lmlist))
-            #str1 = "['t', 185, 289, 15.920351028442383]"
+            #str1 = "[2, 185, 289, 15.920351028442383]"
             print(str1)
             cereal.write(bytes(str1, 'utf-8'))
 
