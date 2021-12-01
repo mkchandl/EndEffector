@@ -14,10 +14,20 @@
 
 void setup() {
   // put your setup code here, to run once:
-  int FSR_pin = PA5;
+  int FSR_pin = PC0;
   FSR FSR_obj(FSR_pin);
+  Serial.begin(115200);
+  
+
+  for(;;){
+      FSR_obj.checkforcontact();
+      delay(1000);
+      
+  }
+
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  
 }

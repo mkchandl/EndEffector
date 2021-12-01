@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Sep 24 12:09:23 2021
-
 @author: Cole
 """
 
 """ 'CAMERA TEST'
-
 import cv2
 import time
 cap = cv2.VideoCapture(0)
@@ -25,22 +23,18 @@ while True:
 """
 
 """ 'just hand tracking'
-
 import cv2
 import mediapipe as mp
 import time
 cap = cv2.VideoCapture(0)
-
 mpHands = mp.solutions.hands
 hands = mpHands.Hands(static_image_mode = False,
                        max_num_hands = 2,
                        min_detection_confidence = 0.5,
                        min_tracking_confidence = 0.5)
 mpDraw = mp.solutions.drawing_utils
-
 pTime = 0
 cTime = 0
-
 while True:
     success, img = cap.read()
     imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -56,13 +50,10 @@ while True:
                 cv2.circle(img, (cx,cy), 3, (255, 0, 255), cv2.FILLED)
                     
             mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
-
     cTime = time.time()
     fps = 1/(cTime-pTime)
     pTime = cTime
-
     cv2.putText(img,str(int(fps)), (10,70), cv2.FONT_HERSHEY_PLAIN, 3, (255,0,255), 3)
-
     cv2.imshow("Image", img)
     cv2.waitKey(1)
     
@@ -105,10 +96,13 @@ class handDetector():
             for id, lm in enumerate(myHand.landmark):
                 h, w, c = img.shape
                 cx, cy = int(lm.x * w), int(lm.y * h)
+                
+                if id == 2 or id == 5:
+                   xs, xy = int(lm.x * w), int(lm.y * h)
                 if id == 4:
-                    lmlist.append(['t', cx, cy, time])
-                elif id == 8:
-                    lmlist.append(['p', cx, cy, time])
+                    lmlist.append(['t', (cx - xs), (cy - xy), time])
+                #elif id == 8:
+                    #lmlist.append(['p', cx, cy, time])
                 if draw:
                     cv2.circle(img, (cx, cy), 3, (255, 0, 255), cv2.FILLED)
         return lmlist
@@ -131,6 +125,7 @@ def main():
         if len(detector.lmlist) != 0:
             #print(detector.lmlist)
             str1 = " ".join(map(str, detector.lmlist))
+            #str1 = "['t', 185, 289, 15.920351028442383]"
             print(str1)
             cereal.write(bytes(str1, 'utf-8'))
 
@@ -160,4 +155,3 @@ if __name__ == "__main__":
                     file.write('{:}\r'.format(a))
             print('data saved!')
             break
-
