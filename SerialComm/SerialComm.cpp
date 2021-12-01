@@ -50,11 +50,11 @@ void SerialComm::read(void)
         string = Serial.readStringUntil(term);
         string.replace(" ","");
         int index = string.indexOf(',');
-        String finger = string.substring(1, index);
+        int finger = string.substring(1, index).toInt();
         string = string.substring(index+1);
         
         {
-            if (finger.equals("p"))
+            if (finger == 2)
             {
                 index = string.indexOf(',');
                 int x1 = string.substring(0, index).toInt();
@@ -84,7 +84,7 @@ void SerialComm::read(void)
 
             }
 
-            else if (finger.equals("t"))
+            else if (finger == 3)
             {
                 index = string.indexOf(',');
                 int x2 = string.substring(0, index).toInt();
