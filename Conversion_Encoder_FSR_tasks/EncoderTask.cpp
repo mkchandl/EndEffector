@@ -104,9 +104,7 @@ void task_encoder(void* p_params)
         // uint16_t data_point = data_queue1.get();
         // Serial.print("Enc Task read from queue test");
         // Serial.println(data_point);
-        Serial << endl;
-        Serial.println("ET: finished");
-        Serial << endl;
+
         vTaskDelay (2000);
 
     }
