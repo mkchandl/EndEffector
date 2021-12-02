@@ -95,8 +95,12 @@ void task_encoder(void* p_params)
 
         /// Ticks to degrees
         int32_t ticks_per_deg = 2248/360; // double check this value w motor datasheet
-        int32_t t1_pos_deg = t1_pos/ticks_per_deg;
-        int32_t t2_pos_deg = t2_pos/ticks_per_deg;
+        //Serial.print("ET: Ticks per degree: ");
+        //Serial.println(ticks_per_deg);
+        int32_t t1_pos_deg = t1_pos/(ticks_per_deg*47);
+        ///Serial.print("ET: t1_pos_degree: ");
+        //Serial.println(t1_pos_deg);
+        int32_t t2_pos_deg = t2_pos/(ticks_per_deg*47);
 
         data_queue1.put(t1_pos_deg); // read a data point and stuff it into queue
         data_queue2.put(t2_pos_deg);
@@ -105,7 +109,7 @@ void task_encoder(void* p_params)
         // Serial.print("Enc Task read from queue test");
         // Serial.println(data_point);
 
-        vTaskDelay (2000);
+        vTaskDelay (500);
 
     }
     
