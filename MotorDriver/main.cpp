@@ -10,7 +10,6 @@
     #include <STM32FreeRTOS.h>
 #endif
 #include "MotorDriver.h"
-#include "EncoderDriver.h"
 
 
 void setup() {
@@ -32,24 +31,13 @@ void setup() {
   //analogWrite(PB9, 200);
   //while (true) { }
 
-  // MotorDriver motor_obj(sleep, IN1A, IN1B, nFault);  // make a class motor object
-  STM32Encoder enc_obj (TIM3, PB4, PB5);      // make a class encoder object
-
-  //enc_obj.zero();
-  // motor_obj.disable();
-  // Serial << endl << "enabling motor" << endl;
-  // motor_obj.enable();
-  // motor_obj.set_duty(80);
-
-for(;;)
-{
-  // Serial << endl << "setting duty to 80" << endl;
-  int16_t position = enc_obj.getCount();
-  Serial.println(position);
-  delay (2500);
-  //motor_obj.disable();
-}
-
+  MotorDriver motor_obj(sleep, IN1A, IN1B, IN2B, IN1B, nFault);  // make a class object
+   Serial << endl << "enabling motor" << endl;
+   motor_obj.enable();
+  motor_obj.set_duty1(80);
+  Serial << endl << "setting duty to 80" << endl;
+  delay (10000);
+  motor_obj.disable();
 }
 
 void loop() {
