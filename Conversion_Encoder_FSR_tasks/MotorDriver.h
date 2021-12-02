@@ -20,7 +20,7 @@ protected:
     // make variables w same names but w underscore in front
     uint8_t _sleep;
     uint8_t _IN1A;
-    uint8_t _IN2A;
+    uint8_t _IN1B;
     uint8_t _nFault;
 
 
@@ -34,7 +34,7 @@ public:
 
     void enable(void); // sets sleep pin high
     void disable(void); // will set sleep pin low
-    void set_duty(uint16_t duty1); // will set duty of motor. duty between 0 and 255
+    void set_duty2(uint16_t duty1); // will set duty of motor. duty between 0 and 255
 };
 
 // start with really low conrol gains and then slowly increase

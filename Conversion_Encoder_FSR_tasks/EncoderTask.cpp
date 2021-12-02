@@ -94,7 +94,7 @@ void task_encoder(void* p_params)
         //Serial.println(t1_pos);
 
         /// Ticks to degrees
-        int32_t ticks_per_deg = 1000*4/360; // double check this value w motor datasheet
+        int32_t ticks_per_deg = 2248/360; // double check this value w motor datasheet
         int32_t t1_pos_deg = t1_pos/ticks_per_deg;
         int32_t t2_pos_deg = t2_pos/ticks_per_deg;
 

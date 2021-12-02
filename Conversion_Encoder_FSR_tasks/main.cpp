@@ -35,12 +35,12 @@ void setup() {
                   9,                               // Priority
                   NULL); 
 
-  xTaskCreate (FSRTask,
-                  "FSRTask",                   // Task name for printouts
-                  1024,                            // Stack size
-                  NULL,                            // Parameters for task fn.
-                  7,                               // Priority
-                  NULL); 
+  // xTaskCreate (FSRTask,
+  //                 "FSRTask",                   // Task name for printouts
+  //                 1024,                            // Stack size
+  //                 NULL,                            // Parameters for task fn.
+  //                 7,                               // Priority
+  //                 NULL); 
 
   #if (defined STM32L4xx || defined STM32F4xx)
           vTaskStartScheduler ();
