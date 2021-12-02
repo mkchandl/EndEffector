@@ -26,8 +26,8 @@ const int8_t l3 = 1.67;
 //const int8_t l2 = 60; //in
 //const int8_t l3 = 40;
 
-const int Kp = .01;
-const int Kd = .01;
+const float Kp = .1;
+//const float Kd = .01;
 
 
 
@@ -166,38 +166,38 @@ void task_conversion(void* p_params)
             int16_t enc_feedback_thetam2 = data_queue2.get(); //pull encoder data from queue
 
             int16_t error1 = theta_m1 - enc_feedback_thetam1; // [deg]
-            //Serial.print("Error, E(s) [deg]:  ");
-            //Serial.println(error1);
+            Serial.print("Error, E(s) [deg]:  ");
+            Serial.println(error1);
             int16_t error2 = theta_m2 - enc_feedback_thetam2;
 
             // convert from thetam to thetam_d by dividing by desired response time
             int16_t thetam_d1 = error1/delta_t1; // [deg/s]
-            //Serial.print("thetam_d1 [deg/s]:  ");
-            //Serial.println(thetam_d1);
+            Serial.print("thetam_d1 [deg/s]:  ");
+            Serial.println(thetam_d1);
             int16_t thetam_d2 = error2/delta_t2;
 
             // convert from deg/ to rpm for thetam_d1/2
-            int16_t thetam_d1_rpm = thetam_d1/6; // [rpm]
-            //Serial.print("thetam_d1_rpm [rpm]:  ");
-            //Serial.println(thetam_d1_rpm);
-            int16_t thetam_d2_rpm = thetam_d2/6;
+            float thetam_d1_rpm = thetam_d1/6; // [rpm]
+            Serial.print("thetam_d1_rpm [rpm]:  ");
+            Serial.println(thetam_d1_rpm);
+            float thetam_d2_rpm = thetam_d2/6;
 
             // give the thetam_d signal to controler
-            int16_t proportional = Kp*thetam_d1_rpm; // [rpm]]
-            int16_t derivative = Kd*thetam_d1_rpm/(delta_t1/60); // [rpm/m]*[s]
-            int16_t controlled_thetam_d1 = proportional + derivative; //[rpm]
+            float proportional = Kp*thetam_d1_rpm; // [rpm]]
+            //float derivative = Kd*thetam_d1_rpm/(delta_t1/60); // [rpm/m]*[s]
+            float controlled_thetam_d1 = proportional ; //[rpm]
             Serial.print("Controller Signal [rpm]:  ");
             Serial.println(controlled_thetam_d1);
             int16_t proportional2 = Kp*thetam_d2_rpm;
-            int16_t derivative2 = Kd*thetam_d2_rpm/(delta_t2/60);
-            int16_t controlled_thetam_d2 = proportional2 + derivative2;
+            //int16_t derivative2 = Kd*thetam_d2_rpm/(delta_t2/60);
+            int16_t controlled_thetam_d2 = proportional2;
 
             // convert from thetam_d [rpm] to duty cycle [%]
             // give duty cycle to motor
-            float duty1 = .012*controlled_thetam_d1;
+            float duty1 = 1.2*controlled_thetam_d1;
             //Serial.print("Duty Cycle [%]:  ");
             
-            float duty2 = .012*controlled_thetam_d2;
+            float duty2 = 1.2*controlled_thetam_d2;
             
             mot_obj1.set_duty2(duty1);
             Serial.print("Duty: ");

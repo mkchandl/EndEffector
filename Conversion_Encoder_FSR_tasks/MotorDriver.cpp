@@ -60,7 +60,7 @@ void MotorDriver:: disable(void)
 /** @brief   
  *  @details This function 
  */
-void MotorDriver:: set_duty2(uint16_t duty2)
+void MotorDriver:: set_duty2(int16_t duty2)
 {
     // limit duty
     if (duty2>100)
@@ -77,7 +77,7 @@ void MotorDriver:: set_duty2(uint16_t duty2)
     {
         //Serial << "Duty2: " << endl;
         Serial.println(duty2);
-        uint16_t value2 = (uint16_t)(duty2*2.55);
+        int16_t value2 = (int16_t)(duty2*(2.55/2));
         //Serial << "Value: " << endl;
         Serial.println(value2);
         digitalWrite(_IN1A, LOW);
@@ -87,7 +87,7 @@ void MotorDriver:: set_duty2(uint16_t duty2)
     {
         //Serial << endl << endl << "Duty2: " << endl;
         Serial.println(duty2);
-        uint16_t value2 = (uint16_t)(-1*duty2*2.55);
+        int16_t value2 = (int16_t)(-1*duty2*2.55);
         //Serial << endl << endl << "Value: " << endl;
         Serial.println(value2);
         digitalWrite(_IN1B, LOW);

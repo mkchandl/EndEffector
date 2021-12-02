@@ -34,7 +34,7 @@ public:
 
     void enable(void); // sets sleep pin high
     void disable(void); // will set sleep pin low
-    void set_duty2(uint16_t duty1); // will set duty of motor. duty between 0 and 255
+    void set_duty2(int16_t duty1); // will set duty of motor. duty between 0 and 255
 };
 
 // start with really low conrol gains and then slowly increase
