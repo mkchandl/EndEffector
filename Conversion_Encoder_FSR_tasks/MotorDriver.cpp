@@ -75,20 +75,20 @@ void MotorDriver:: set_duty2(uint16_t duty2)
     // set duty
     if (duty2 >= 0)
     {
-        Serial << "Duty2: " << endl;
+        //Serial << "Duty2: " << endl;
         Serial.println(duty2);
         uint16_t value2 = (uint16_t)(duty2*2.55);
-        Serial << "Value: " << endl;
+        //Serial << "Value: " << endl;
         Serial.println(value2);
         digitalWrite(_IN1A, LOW);
         analogWrite(_IN1B, value2);
     }
     else if (duty2 < 0)
     {
-        Serial << endl << endl << "Duty2: " << endl;
+        //Serial << endl << endl << "Duty2: " << endl;
         Serial.println(duty2);
         uint16_t value2 = (uint16_t)(-1*duty2*2.55);
-        Serial << endl << endl << "Value: " << endl;
+        //Serial << endl << endl << "Value: " << endl;
         Serial.println(value2);
         digitalWrite(_IN1B, LOW);
         analogWrite(_IN1A, value2);
