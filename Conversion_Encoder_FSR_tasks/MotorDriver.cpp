@@ -18,7 +18,7 @@ MotorDriver::MotorDriver(uint8_t sleep, uint8_t IN1A, uint8_t IN2A, uint8_t nFau
 {
     _sleep = sleep; // saving param given to constructor as var for class
     _IN1A = IN1A;
-    _IN2A = IN2A;
+    _IN1B = IN2A;
     _nFault = nFault;
 
     // QUESTIONS set up nsleep and nfault as outputs?
@@ -60,41 +60,37 @@ void MotorDriver:: disable(void)
 /** @brief   
  *  @details This function 
  */
-void MotorDriver:: set_duty(uint16_t duty1)
+void MotorDriver:: set_duty2(uint16_t duty2)
 {
-    // the idea is to have the input to this be a python-like "duty cycle" from -100 to 100
-    // this will provide an easy way to switch motor directions
-    // the duty cycle will be converted to a number between 0 adn 255 once motor dir is established
-    // NOTE: This means that duty cycle will have to be calculated in a separate mthod and handed to this method
     // limit duty
-    if (duty1>100)
+    if (duty2>100)
     {
-        duty1 = 100;
+        duty2 = 100;
     }
-    else if (duty1 < -100) 
+    else if (duty2 < -100) 
     {
-        duty1 = -100;
+        duty2 = -100;
     }
-    
+
     // set duty
-    if (duty1 >= 0)
+    if (duty2 >= 0)
     {
-        Serial << endl << endl << "Duty1: " << endl;
-        Serial.println(duty1);
-        uint16_t value = (uint16_t)(duty1*2.55); // typcasting result of multiplication into uint16 
-        Serial << endl << endl << "Value: " << endl;
-        Serial.println(value);
+        Serial << "Duty2: " << endl;
+        Serial.println(duty2);
+        uint16_t value2 = (uint16_t)(duty2*2.55);
+        Serial << "Value: " << endl;
+        Serial.println(value2);
         digitalWrite(_IN1A, LOW);
-        analogWrite(_IN2A, value);
+        analogWrite(_IN1B, value2);
     }
-    else if (duty1 < 0)
+    else if (duty2 < 0)
     {
-        Serial << endl << endl << "Duty1: " << endl;
-        Serial.println(duty1);
-        uint16_t value = (uint16_t)(-1*duty1*2.55);
+        Serial << endl << endl << "Duty2: " << endl;
+        Serial.println(duty2);
+        uint16_t value2 = (uint16_t)(-1*duty2*2.55);
         Serial << endl << endl << "Value: " << endl;
-        Serial.println(value);
-        digitalWrite(_IN2A, LOW);
-        analogWrite(_IN1A, value);
+        Serial.println(value2);
+        digitalWrite(_IN1B, LOW);
+        analogWrite(_IN1A, value2);
     }
 }

@@ -19,7 +19,9 @@ void FSRTask(void* p_params)
 {
     (void)p_params; 
     /// Create FSR object
-    FSR fsr_obj(A5);
+    int FSR_pin = PC0;
+    FSR fsr_obj(FSR_pin);
+    motor_shutoff.put(0);
     
 
     for(;;)
