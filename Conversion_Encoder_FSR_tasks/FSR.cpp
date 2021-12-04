@@ -1,6 +1,8 @@
 /** @file FSR.cpp
- *    This file contains the methods for a class that deals with the 
- *    FSR for the 
+ *    This file contains the methods for a class for the FSR, which monitors the contact
+ *    between the two fingers and tells the conversion task to shutoff the motors if the
+ *    measured contact is too great. 
+ * 
  *  @author Michelle Chandler
  *  @date  2021-Nov-18 Original file
  */
@@ -15,7 +17,7 @@
 
 /** @brief   Create a FSR object
  *  @details This constructor saves the FSR pin 
- *  @param 
+ *  @param FSR_pin This parameter represents the fsr pin on the nucleo
  */
 FSR::FSR(int FSR_pin)
 {
