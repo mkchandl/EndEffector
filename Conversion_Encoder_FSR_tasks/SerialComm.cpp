@@ -36,9 +36,7 @@ SerialComm::SerialComm(void)
 
 /** @brief   Method which reads from serial port
  *  @details This method reads from the serial port, determines which finger the 
- *           coords and time stamp belong to, and then save them to the appropriate 
- *           array
- *  @return  a 1x4 array with finger indentification, x and y coord, and time stamp
+ *           coords and time stamp belong to, and then saves them to the appropriate variables
  */
 void SerialComm::read(void)
 {
@@ -50,14 +48,12 @@ void SerialComm::read(void)
         string = Serial.readStringUntil(term);
         string.replace(" ","");
         int index = string.indexOf(',');
-        String finger = string.substring(1, index);
+        int finger = string.substring(1, index).toInt();
         string = string.substring(index+1);
         
         {
-            if (finger.equals("p"))
+            if (finger == 2)
             {
-                Serial.println("entered if = P loop"); // for testing
-                delay(2000);
                 index = string.indexOf(',');
                 int x1 = string.substring(0, index).toInt();
 
@@ -69,11 +65,8 @@ void SerialComm::read(void)
 
             }
 
-            else if (finger.equals("t"))
+            else if (finger == 3)
             {
-                Serial.println("entered if = T loop"); // for testing
-                delay(2000);
-                
                 index = string.indexOf(',');
                 int x2 = string.substring(0, index).toInt();
 
@@ -89,31 +82,56 @@ void SerialComm::read(void)
     }
 }   
 
+
+/** @brief   Method which returns the x coordinate for motor 1
+ *  @details This method returns the most recently updated x-coordinate
+ *           for motor 1
+ */
 int32_t SerialComm::return_x1(void)
 {
     return x1;
 }
 
+/** @brief   Method which returns the y coordinate for motor 1
+ *  @details This method returns the most recently updated y-coordinate
+ *           for motor 1
+ */
 int32_t SerialComm::return_y1(void)
 {
     return y1;
 }
 
+/** @brief   Method which returns the time stamp for motor 1
+ *  @details This method returns the most recently updated time stamp
+ *           for motor 1
+ */
 int32_t SerialComm::return_t1(void)
 {
     return t1;
 }
 
+/** @brief   Method which returns the x coordinate for motor 2
+ *  @details This method returns the most recently updated x-coordinate
+ *           for motor 2
+ */
 int32_t SerialComm::return_x2(void)
 {
     return x2;
 }
 
+/** @brief   Method which returns the y coordinate for motor 2
+ *  @details This method returns the most recently updated y-coordinate
+ *           for motor 2
+ */
 int32_t SerialComm::return_y2(void)
 {
     return y2;
 }
 
+/** @brief   Method which returns the time stamp for motor 2
+ *  @details This method returns the most recently updated time stamp
+ *           for motor 2
+ */
 int32_t SerialComm::return_t2(void)
 {
     return t2;

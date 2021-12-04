@@ -24,23 +24,12 @@ protected:
     uint8_t _nFault;
 
 
-// QUESTION: IS THE TIMER VARIABLE TIM EVEN NECESSARY W ANALOGWRITE()
 
 public:
     //constructor
     MotorDriver(uint8_t sleep, uint8_t IN1A, uint8_t IN2A, uint8_t nFault);
-    
-    // QUESTION which methods need to return something other than void
 
     void enable(void); // sets sleep pin high
     void disable(void); // will set sleep pin low
     void set_duty2(int16_t duty1); // will set duty of motor. duty between 0 and 255
 };
-
-// start with really low conrol gains and then slowly increase
-// start with plain old proportional control and then
-// if ss eror is bad, add integral, if its too slow, add derivative
-// limit switch instead of fsr
-// or just plain limit max duty cycle until more confident in model
-
-// send prof email with resume

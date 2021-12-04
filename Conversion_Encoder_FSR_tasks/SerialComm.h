@@ -5,13 +5,7 @@
  *  @author  Michelle Chandler
  *  @date    2021-Oct-28 Original file
  */
-/** @file SerialComm.h
- *  This file contains the headers for a class the enables serial communication
- *  within the task conversion for the me507 end effector project. 
- * 
- *  @author  Michelle Chandler
- *  @date    2021-Oct-28 Original file
- */
+
 #include <Arduino.h>
 #include <PrintStream.h>
 #if (defined STM32L4xx || defined STM32F4xx)

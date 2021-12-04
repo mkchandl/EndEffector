@@ -15,6 +15,8 @@ Share<int> motor_shutoff ("Motor_shutoff");
 
 void setup() {
   // put your setup code here, to run once:
+
+  /// Set up the serial port
   Serial.begin (115200);
   delay (2000);
   Serial.println("Hello");

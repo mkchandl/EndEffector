@@ -1,6 +1,7 @@
 /** @file MotorDriver.cpp
  *  This file contains a motor driver for a simple brushed DC motor
- *  This driver was based off of my ME 405 motor driver in python
+ *  This driver was based off of my ME 405 motor driver in python and the 
+ *  arduino documentation.
  * 
  *  @author  Michelle Chandler
  *  @date    2021-Oct-28 Original file
@@ -10,9 +11,13 @@
 #include <PrintStream.h>
 #include "MotorDriver.h"
 
-/** @brief   Create a Motor Driver
- *  @details This constructor 
- *  @param 
+/** @brief   Motor driver class for a brushed DC motor
+ *  @details This class drives motors using the arduino library and allows 
+ *           for complete control of the motor using PWM. 
+ *  @param   sleep This parameter represents the sleep pin on the motor driver breakout board. 
+ *  @param   IN1A This parameter represents one of two motor wires?pins? that control the duty cycle and direction
+ *  @param   IN1A This parameter represents one of two motor wires?pins? that control the duty cycle and direction
+ *  @param   nFault This parameter represents the nFault pin on the motor driver board
  */
 MotorDriver::MotorDriver(uint8_t sleep, uint8_t IN1A, uint8_t IN2A, uint8_t nFault)
 {
@@ -21,26 +26,18 @@ MotorDriver::MotorDriver(uint8_t sleep, uint8_t IN1A, uint8_t IN2A, uint8_t nFau
     _IN1B = IN2A;
     _nFault = nFault;
 
-    // QUESTIONS set up nsleep and nfault as outputs?
     pinMode(sleep, OUTPUT);
     pinMode(nFault, OUTPUT);
-    /* for other pins will want to be able to change the direction of motor
-        so instead of setting one as the output here, set them in the set 
-        duty method
-        OR
-        QUESTIONdo i set both pins as outputs and digitalWrite(IN1/2A/B HIGH/LOW)?
-    */
-   pinMode(IN1A, OUTPUT);
-   pinMode(IN2A, OUTPUT);
+    pinMode(IN1A, OUTPUT);
+    pinMode(IN2A, OUTPUT);
 
-    // setting low for safety?
    digitalWrite(_sleep, LOW);
-   digitalWrite(_sleep, LOW);
+   digitalWrite(_nFault, LOW);
 }
 
 
-/** @brief   
- *  @details This function
+/** @brief   This function enables the motors
+ *  @details This function enables motor dring by setting the sleep pin high
  */
 void MotorDriver:: enable(void)
 {
@@ -48,8 +45,8 @@ void MotorDriver:: enable(void)
 }
 
 
-/** @brief   
- *  @details This function 
+/** @brief   This function disables the motors
+ *  @details This function disables the motors by setting the sleep pin low
  */
 void MotorDriver:: disable(void)
 {
@@ -57,12 +54,13 @@ void MotorDriver:: disable(void)
 }
 
 
-/** @brief   
- *  @details This function 
+/** @brief   This function sets the duty cycle of the motor
+ *  @details This function uses PWM to control the speed of the motor
+ *  @param duty2 This parameter represents the requeested duty cycle to be handed to the motor
  */
 void MotorDriver:: set_duty2(int16_t duty2)
 {
-    // limit duty
+    /// Set duty limits to -100% and 100%
     if (duty2>100)
     {
         duty2 = 100;
@@ -72,24 +70,16 @@ void MotorDriver:: set_duty2(int16_t duty2)
         duty2 = -100;
     }
 
-    // set duty
+    ///Set duty by translating duty cycle into a 16-bit value
     if (duty2 >= 0)
     {
-        //Serial << "Duty2: " << endl;
-        Serial.println(duty2);
         int16_t value2 = (int16_t)(duty2*(2.55/2));
-        //Serial << "Value: " << endl;
-        Serial.println(value2);
         digitalWrite(_IN1A, LOW);
         analogWrite(_IN1B, value2);
     }
     else if (duty2 < 0)
     {
-        //Serial << endl << endl << "Duty2: " << endl;
-        Serial.println(duty2);
         int16_t value2 = (int16_t)(-1*duty2*2.55);
-        //Serial << endl << endl << "Value: " << endl;
-        Serial.println(value2);
         digitalWrite(_IN1B, LOW);
         analogWrite(_IN1A, value2);
     }
