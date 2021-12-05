@@ -116,7 +116,7 @@ def main():
     cap = cv2.VideoCapture(0)
     
     """EDIT HERE FOR YOUR COM PORT"""
-    cereal = serial.Serial(port='COM3', baudrate=115273, timeout=1)
+    cereal = serial.Serial(port='COM5', baudrate=115273, timeout=1)
     
     while True:
         success, img = cap.read()
