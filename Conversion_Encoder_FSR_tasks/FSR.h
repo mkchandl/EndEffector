@@ -1,7 +1,7 @@
 /** @file FSR.ch
  *    This file contains the headers for a class that deals with the 
  *    FSR for the end effector
- *  @author Michelle Chandler
+ *  @author Michelle Chandler and Cole Andrews
  *  @date  2021-Nov-18 Original file
  */
 

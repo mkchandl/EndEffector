@@ -3,7 +3,7 @@
  *    between the two fingers and tells the conversion task to shutoff the motors if the
  *    measured contact is too great. 
  * 
- *  @author Michelle Chandler
+ *  @author Michelle Chandler and Cole Andrews
  *  @date  2021-Nov-18 Original file
  */
 

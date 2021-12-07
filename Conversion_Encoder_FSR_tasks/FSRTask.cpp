@@ -2,7 +2,7 @@
  *  This file contains the method for a task that monitors the FSR and writes to a 
  *  shared variable called motor_shutoff, which is shared with the conversion task.
  * 
- *  @author  Michelle Chandler
+ *  @author  Michelle Chandler and Cole Andrews
  *  @date    24 Nov 2021 Original file
  */
 

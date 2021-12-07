@@ -4,7 +4,7 @@
  *  in the conversiont task
  *  This task includes the encoder driver from the ME 507 support Git hub, found here: https://github.com/spluttflob/ME507-Support.git
  * 
- *  @author  Michelle Chandler
+ *  @author  Michelle Chandler and Cole Andrews
  *  @date    18 Nov 2021 Original file
  */
 #include <iostream>
@@ -58,16 +58,10 @@ void task_encoder(void* p_params)
 
         t1_pos += delta1;
         t2_pos += delta2;// in ticks
-        //Serial.print("ET: t1_pos: ");
-        //Serial.println(t1_pos);
 
         /// Ticks to degrees
-        int32_t ticks_per_deg = 2248/360; // double check this value w motor datasheet
-        //Serial.print("ET: Ticks per degree: ");
-        //Serial.println(ticks_per_deg);
+        int32_t ticks_per_deg = 2248/360; 
         int32_t t1_pos_deg = t1_pos/(ticks_per_deg*47);
-        ///Serial.print("ET: t1_pos_degree: ");
-        //Serial.println(t1_pos_deg);
         int32_t t2_pos_deg = t2_pos/(ticks_per_deg*47);
 
         data_queue1.put(t1_pos_deg); // read a data point and stuff it into queue

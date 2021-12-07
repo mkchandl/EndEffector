@@ -3,7 +3,7 @@
  *  converts the ticks into angular position which is then used for to generate the error signal
  *  in the conversiont task
  * 
- *  @author  Michelle Chandler
+ *  @author  Michelle Chandler and Cole Andrews
  *  @date    18 Nov 2021 Original file
  */
 #ifndef _ENCODER_TASK_

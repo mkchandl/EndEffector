@@ -1,3 +1,10 @@
+/** @file main.cpp
+ *  This file contains the main file to run the three end effector tasks that live on the nucleo
+ * 
+ *  @author  Michelle Chandler and Cole Andrews
+ *  @date    24 Nov 2021 Original file
+ */
+
 #include <Arduino.h>
 #include <PrintStream.h>
 #if (defined STM32L4xx || defined STM32F4xx)
@@ -37,12 +44,12 @@ void setup() {
                   9,                               // Priority
                   NULL); 
 
-  // xTaskCreate (FSRTask,
-  //                 "FSRTask",                   // Task name for printouts
-  //                 1024,                            // Stack size
-  //                 NULL,                            // Parameters for task fn.
-  //                 7,                               // Priority
-  //                 NULL); 
+  xTaskCreate (FSRTask,
+                  "FSRTask",                   // Task name for printouts
+                  1024,                            // Stack size
+                  NULL,                            // Parameters for task fn.
+                  7,                               // Priority
+                  NULL); 
 
   #if (defined STM32L4xx || defined STM32F4xx)
           vTaskStartScheduler ();

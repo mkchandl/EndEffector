@@ -2,7 +2,7 @@
  *  This file contains a motor driver for a simple brushed DC motor
  *  This driver was based off of my ME 405 motor driver in python
  * 
- *  @author  Michelle Chandler
+ *  @author  Michelle Chandler and Cole Andrews
  *  @date    2021-Oct-28 Original file
  */
 

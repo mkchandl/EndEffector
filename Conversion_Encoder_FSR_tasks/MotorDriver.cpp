@@ -3,7 +3,7 @@
  *  This driver was based off of my ME 405 motor driver in python and the 
  *  arduino documentation.
  * 
- *  @author  Michelle Chandler
+ *  @author  Michelle Chandler and Cole Andrews
  *  @date    2021-Oct-28 Original file
  */
 

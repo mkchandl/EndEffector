@@ -2,7 +2,7 @@
  *  This file contains a task that takes the x,y coords of a finger pointer and then converts it 
  *  into the theta desired by the motor
  * 
- *  @author  Michelle Chandler
+ *  @author  Michelle Chandler and Cole Andrews
  *  @date    18 Nov 2021 Original file
  */
 #include <iostream>
@@ -109,28 +109,19 @@ void task_conversion(void* p_params)
             const int theta_1 = 0; // degrees
             float c_31 = ( pow((array_x1[index] - l1*sin(theta_1)),2) + pow(array_y1[index],2) + pow((0 - l1*cos(theta_1)), 2) - pow(l2, 2 ) - pow(l3, 2))/(2*l1*l2);
             float c_32 = ( pow((array_x2[index] - l1*sin(theta_1)),2) + pow(array_y2[index],2) + pow((0 - l1*cos(theta_1)), 2) - pow(l2, 2 ) - pow(l3, 2))/(2*l1*l2);
-            Serial.print("c31:  ");
-            Serial.println(c_31);
             if(c_31 > 1)
             {
                 c_31 = 0;
             }
             float s_31 = sqrt(1 - pow(c_31,2));
             float s_32 = sqrt(1 - pow(c_32,2));
-            Serial.print("s31:  ");
-            Serial.println(s_31);
             float k_11 = l2 + l3*c_31;
             float k_12 = l2 + l3*c_32;
-            Serial.print("k11:  ");
-            Serial.println(k_11);
             float k_21 = l3*s_31;
             float k_22 = l3*s_32;
-            Serial.print("k21:  ");
-            Serial.println(k_21);
             float theta_2_1_rad = atan2(sqrt( pow((array_x1[index] - l1*sin(theta_1)),2) + pow((0 - l1*cos(theta_1)), 2)), array_y1[index]) - atan2(k_21, k_11) ; // [rad]
             float theta_2_2_rad = atan2(sqrt( pow((array_x2[index] - l1*sin(theta_1)),2) + pow((0 - l1*cos(theta_1)), 2)), array_x2[index]) - atan2(k_22, k_12) ; 
-            Serial.print("Theta_2_1 [rad]:  ");
-            Serial.println(theta_2_1_rad);
+
             //^^^ this needs a plus/minus in front of the swaure root, or an if statement and 2 equations?
 
             //THETA2 RAD TO DEGREES
@@ -173,12 +164,8 @@ void task_conversion(void* p_params)
 
             // give the thetam_d signal to controler
             float proportional = Kp*thetam_d1_rpm; // [rpm]]
-            //float derivative = Kd*thetam_d1_rpm/(delta_t1/60); // [rpm/m]*[s]
             float controlled_thetam_d1 = proportional ; //[rpm]
-            Serial.print("Controller Signal [rpm]:  ");
-            Serial.println(controlled_thetam_d1);
             float proportional2 = Kp*thetam_d2_rpm;
-            //int16_t derivative2 = Kd*thetam_d2_rpm/(delta_t2/60);
             float controlled_thetam_d2 = proportional2;
 
             // convert from thetam_d [rpm] to duty cycle [%]

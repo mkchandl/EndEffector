@@ -2,7 +2,7 @@
  *  This file contains the methods for a class the enables serial communication
  *  within the task conversion for the me507 end effector project. 
  * 
- *  @author  Michelle Chandler
+ *  @author  Michelle Chandler and Cole Amdrews
  *  @date    2021-Nov-22 Original file
  */
 
