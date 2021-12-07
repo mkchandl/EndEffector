@@ -101,8 +101,8 @@ class handDetector():
                    xs, xy = int(lm.x * w), int(lm.y * h)
                 if id == 4:
                     lmlist.append([2, (cx - xs), (cy - xy), time])
-                #elif id == 8:
-                    #lmlist.append([3, cx, cy, time])
+               # elif id == 8:
+                   # lmlist.append([3, cx-xs, cy-xy, time])
                 if draw:
                     cv2.circle(img, (cx, cy), 3, (255, 0, 255), cv2.FILLED)
         return lmlist
@@ -116,7 +116,8 @@ def main():
     cap = cv2.VideoCapture(0)
     
     """EDIT HERE FOR YOUR COM PORT"""
-    cereal = serial.Serial(port='COM5', baudrate=115273, timeout=1)
+    cereal = serial.Serial(port='COM4', baudrate=115273, timeout=1)
+    #cereal2 = serial.Serial(port='COM5', baudrate=115273, timeout=1)
     
     while True:
         success, img = cap.read()
@@ -128,6 +129,8 @@ def main():
             #str1 = "[2, 185, 289, 15.920351028442383]"
             print(str1)
             cereal.write(bytes(str1, 'utf-8'))
+            #cereal2.write(bytes(str1, 'utf-8'))
+            time.sleep(.5);
 
         cTime = time.time() - startTime
         fps = 1 / (cTime - pTime)
