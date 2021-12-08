@@ -1,0 +1,66 @@
+\hypertarget{class_f_s_r}{}\doxysection{FSR Class Reference}
+\label{class_f_s_r}\index{FSR@{FSR}}
+
+
+Class which controls the \mbox{\hyperlink{class_f_s_r}{FSR}}.  
+
+
+
+
+{\ttfamily \#include $<$FSR.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_f_s_r_a7316cc6a067fd89249138b8a24ca3627}{FSR}} (int FSR\+\_\+pin)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{class_f_s_r}{FSR}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_f_s_r_a7c73f669e9b041df21ecb9ee9b770b2a}{checkforcontact}} (void)
+\begin{DoxyCompactList}\small\item\em Check for contact with the \mbox{\hyperlink{class_f_s_r}{FSR}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_f_s_r_ab1aed813dd6fdea8a5ee20f117211c23}\label{class_f_s_r_ab1aed813dd6fdea8a5ee20f117211c23}} 
+int {\bfseries \+\_\+\+FSR\+\_\+pin}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class which controls the \mbox{\hyperlink{class_f_s_r}{FSR}}. 
+
+This class represents the \mbox{\hyperlink{class_f_s_r}{FSR}} that controls emergency shutoff of the motors to protect the physical system 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_f_s_r_a7316cc6a067fd89249138b8a24ca3627}\label{class_f_s_r_a7316cc6a067fd89249138b8a24ca3627}} 
+\index{FSR@{FSR}!FSR@{FSR}}
+\index{FSR@{FSR}!FSR@{FSR}}
+\doxysubsubsection{\texorpdfstring{FSR()}{FSR()}}
+{\footnotesize\ttfamily FSR\+::\+FSR (\begin{DoxyParamCaption}\item[{int}]{FSR\+\_\+pin }\end{DoxyParamCaption})}
+
+
+
+Create a \mbox{\hyperlink{class_f_s_r}{FSR}} object. 
+
+This constructor saves the \mbox{\hyperlink{class_f_s_r}{FSR}} pin 
+\begin{DoxyParams}{Parameters}
+{\em FSR\+\_\+pin} & This parameter represents the fsr pin on the nucleo \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_f_s_r_a7c73f669e9b041df21ecb9ee9b770b2a}\label{class_f_s_r_a7c73f669e9b041df21ecb9ee9b770b2a}} 
+\index{FSR@{FSR}!checkforcontact@{checkforcontact}}
+\index{checkforcontact@{checkforcontact}!FSR@{FSR}}
+\doxysubsubsection{\texorpdfstring{checkforcontact()}{checkforcontact()}}
+{\footnotesize\ttfamily void FSR\+::checkforcontact (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Check for contact with the \mbox{\hyperlink{class_f_s_r}{FSR}}. 
+
+This method checks for any kind of contact with the \mbox{\hyperlink{class_f_s_r}{FSR}} and shuts off the motors if the force is too great. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+FSR.\+h\item 
+\mbox{\hyperlink{_f_s_r_8cpp}{FSR.\+cpp}}\end{DoxyCompactItemize}

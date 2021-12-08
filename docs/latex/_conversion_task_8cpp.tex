@@ -1,0 +1,68 @@
+\hypertarget{_conversion_task_8cpp}{}\doxysection{Conversion\+Task.\+cpp File Reference}
+\label{_conversion_task_8cpp}\index{ConversionTask.cpp@{ConversionTask.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Print\+Stream.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Conversion\+Task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Motor\+Driver.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include \char`\"{}Serial\+Comm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shares.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_conversion_task_8cpp_a01f6841bb42ed4a0b1d8705e41f6fe05}{task\+\_\+conversion}} (void $\ast$p\+\_\+params)
+\begin{DoxyCompactList}\small\item\em Task which provides motors with duty cycles to match the computer-\/vision hand. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_conversion_task_8cpp_acc052a6bc8b90d50f836e7b67c6051bd}\label{_conversion_task_8cpp_acc052a6bc8b90d50f836e7b67c6051bd}} 
+const int8\+\_\+t {\bfseries l1} = 40
+\item 
+\mbox{\Hypertarget{_conversion_task_8cpp_ab4c1cebe775f9512f37e75a6245250ec}\label{_conversion_task_8cpp_ab4c1cebe775f9512f37e75a6245250ec}} 
+const int8\+\_\+t {\bfseries l2} = 60
+\item 
+\mbox{\Hypertarget{_conversion_task_8cpp_a12820656102447221c461139cb215b2a}\label{_conversion_task_8cpp_a12820656102447221c461139cb215b2a}} 
+const int8\+\_\+t {\bfseries l3} = 40
+\item 
+\mbox{\Hypertarget{_conversion_task_8cpp_a790f9df599f1d6c92855645c65a0cccc}\label{_conversion_task_8cpp_a790f9df599f1d6c92855645c65a0cccc}} 
+const float {\bfseries Kp} = 1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains a task that takes the x,y coords of a finger pointer and then converts it into the theta desired by the motor
+
+\begin{DoxyAuthor}{Author}
+Michelle Chandler and Cole Andrews 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18 Nov 2021 Original file 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_conversion_task_8cpp_a01f6841bb42ed4a0b1d8705e41f6fe05}\label{_conversion_task_8cpp_a01f6841bb42ed4a0b1d8705e41f6fe05}} 
+\index{ConversionTask.cpp@{ConversionTask.cpp}!task\_conversion@{task\_conversion}}
+\index{task\_conversion@{task\_conversion}!ConversionTask.cpp@{ConversionTask.cpp}}
+\doxysubsubsection{\texorpdfstring{task\_conversion()}{task\_conversion()}}
+{\footnotesize\ttfamily void task\+\_\+conversion (\begin{DoxyParamCaption}\item[{void $\ast$}]{p\+\_\+params }\end{DoxyParamCaption})}
+
+
+
+Task which provides motors with duty cycles to match the computer-\/vision hand. 
+
+This task calls a number of classes including the motor driver, serial, and \mbox{\hyperlink{class_f_s_r}{FSR}} task in order to grab the coordinates provided by the computer-\/vision program running on the desktop and converting them into the angular displacement of the first joint of the finger. The equation that was used for this was found here\+: \href{https://www.researchgate.net/publication/290740307_A_Three_Finger_Tendon_Driven_Robotic_Hand_Design_and_Its_Kinematics_Model}{\texttt{ https\+://www.\+researchgate.\+net/publication/290740307\+\_\+\+A\+\_\+\+Three\+\_\+\+Finger\+\_\+\+Tendon\+\_\+\+Driven\+\_\+\+Robotic\+\_\+\+Hand\+\_\+\+Design\+\_\+and\+\_\+\+Its\+\_\+\+Kinematics\+\_\+\+Model}} This angular displacement is translated into angular velocity, fed through a controller, converted to duty cycle using a linear relationship between 100\% duty and max motor speed. This duty cycle is fed to the motors 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+param} & This parameter was added to stop a compiler error \\
+\hline
+\end{DoxyParams}
+create motor objects
+
+disable motors to ensure no undesired motor movement
+
+enable both motors
+
+create serial object
+
+Check to make sure the fsr hasnt triggered a shutoff

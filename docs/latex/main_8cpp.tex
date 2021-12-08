@@ -1,0 +1,48 @@
+\hypertarget{main_8cpp}{}\doxysection{main.\+cpp File Reference}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Print\+Stream.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}taskqueue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}taskshare.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shares.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Conversion\+Task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Encoder\+Task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}FSRTask.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8cpp_ae77b62310228fc04391350c0785ca489}\label{main_8cpp_ae77b62310228fc04391350c0785ca489}} 
+Queue$<$ uint32\+\_\+t $>$ {\bfseries data\+\_\+queue1} (100, \char`\"{}enc1\+\_\+pos\char`\"{})
+\item 
+\mbox{\Hypertarget{main_8cpp_a202fd78d8d7dd29d039471e03b163f0e}\label{main_8cpp_a202fd78d8d7dd29d039471e03b163f0e}} 
+Queue$<$ uint32\+\_\+t $>$ {\bfseries data\+\_\+queue2} (100, \char`\"{}enc2\+\_\+pos\char`\"{})
+\item 
+\mbox{\Hypertarget{main_8cpp_aa5f884aaaabe340a5be59dc3fc37dbf4}\label{main_8cpp_aa5f884aaaabe340a5be59dc3fc37dbf4}} 
+Share$<$ int $>$ {\bfseries motor\+\_\+shutoff} (\char`\"{}Motor\+\_\+shutoff\char`\"{})
+\item 
+void \mbox{\hyperlink{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+\mbox{\Hypertarget{main_8cpp_afe461d27b9c48d5921c00d521181f12f}\label{main_8cpp_afe461d27b9c48d5921c00d521181f12f}} 
+void {\bfseries loop} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the main file to run the three end effector tasks that live on the nucleo
+
+\begin{DoxyAuthor}{Author}
+Michelle Chandler and Cole Andrews 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+24 Nov 2021 Original file 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}\label{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{main.cpp@{main.cpp}!setup@{setup}}
+\index{setup@{setup}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Set up the serial port

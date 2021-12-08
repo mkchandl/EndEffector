@@ -1,0 +1,45 @@
+\hypertarget{_encoder_task_8cpp}{}\doxysection{Encoder\+Task.\+cpp File Reference}
+\label{_encoder_task_8cpp}\index{EncoderTask.cpp@{EncoderTask.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Print\+Stream.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Encoder\+Task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Encoder\+Driver.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}shares.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_encoder_task_8cpp_ac029ad595d36039f79e8e56407a19e26}{task\+\_\+encoder}} (void $\ast$p\+\_\+params)
+\begin{DoxyCompactList}\small\item\em Task which reads from the motor encoders to track position for closed-\/loop position control. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the function for a task that records the motor shaft position of both motors and converts the ticks into angular position which is then used for to generate the error signal in the conversiont task This task includes the encoder driver from the ME 507 support Git hub, found here\+: \href{https://github.com/spluttflob/ME507-Support.git}{\texttt{ https\+://github.\+com/spluttflob/\+ME507-\/\+Support.\+git}}
+
+\begin{DoxyAuthor}{Author}
+Michelle Chandler and Cole Andrews 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18 Nov 2021 Original file 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_encoder_task_8cpp_ac029ad595d36039f79e8e56407a19e26}\label{_encoder_task_8cpp_ac029ad595d36039f79e8e56407a19e26}} 
+\index{EncoderTask.cpp@{EncoderTask.cpp}!task\_encoder@{task\_encoder}}
+\index{task\_encoder@{task\_encoder}!EncoderTask.cpp@{EncoderTask.cpp}}
+\doxysubsubsection{\texorpdfstring{task\_encoder()}{task\_encoder()}}
+{\footnotesize\ttfamily void task\+\_\+encoder (\begin{DoxyParamCaption}\item[{void $\ast$}]{p\+\_\+params }\end{DoxyParamCaption})}
+
+
+
+Task which reads from the motor encoders to track position for closed-\/loop position control. 
+
+This task monitors the angular position of the motors, converts the position into degrees, and writes the encoder values into two shared queues for use by the conversion task. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+param} & This parameter was added to stop a compiler error \\
+\hline
+\end{DoxyParams}
+Create encoder timer objects
+
+Ticks to degrees
