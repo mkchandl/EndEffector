@@ -1,0 +1,98 @@
+\hypertarget{class_motor_driver}{}\doxysection{Motor\+Driver Class Reference}
+\label{class_motor_driver}\index{MotorDriver@{MotorDriver}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_motor_driver_a1663d94370fee2681049c796bc866c0f}{Motor\+Driver}} (uint8\+\_\+t sleep, uint8\+\_\+t IN1A, uint8\+\_\+t IN2A, uint8\+\_\+t n\+Fault)
+\begin{DoxyCompactList}\small\item\em Motor driver class for a brushed DC motor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_motor_driver_a191bb963050625ef0c43344476803d9e}{enable}} (void)
+\begin{DoxyCompactList}\small\item\em This function enables the motors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_motor_driver_ab7ef925c94ac19ccec5e6f7cd3d372d2}{disable}} (void)
+\begin{DoxyCompactList}\small\item\em This function disables the motors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_motor_driver_a2c8f5a75059f2a089d066f64a45d6972}{set\+\_\+duty2}} (int16\+\_\+t duty1)
+\begin{DoxyCompactList}\small\item\em This function sets the duty cycle of the motor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_motor_driver_aa55d3660ece2a677fff979d058140e98}\label{class_motor_driver_aa55d3660ece2a677fff979d058140e98}} 
+uint8\+\_\+t {\bfseries \+\_\+sleep}
+\item 
+\mbox{\Hypertarget{class_motor_driver_acbb08cbb1285d2376f7e44a3803c07e1}\label{class_motor_driver_acbb08cbb1285d2376f7e44a3803c07e1}} 
+uint8\+\_\+t {\bfseries \+\_\+\+IN1A}
+\item 
+\mbox{\Hypertarget{class_motor_driver_a388f824439aafc23cc7c7175f46bc250}\label{class_motor_driver_a388f824439aafc23cc7c7175f46bc250}} 
+uint8\+\_\+t {\bfseries \+\_\+\+IN1B}
+\item 
+\mbox{\Hypertarget{class_motor_driver_a2c9f83ee09e07059a40a53761e47e84f}\label{class_motor_driver_a2c9f83ee09e07059a40a53761e47e84f}} 
+uint8\+\_\+t {\bfseries \+\_\+n\+Fault}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_motor_driver_a1663d94370fee2681049c796bc866c0f}\label{class_motor_driver_a1663d94370fee2681049c796bc866c0f}} 
+\index{MotorDriver@{MotorDriver}!MotorDriver@{MotorDriver}}
+\index{MotorDriver@{MotorDriver}!MotorDriver@{MotorDriver}}
+\doxysubsubsection{\texorpdfstring{MotorDriver()}{MotorDriver()}}
+{\footnotesize\ttfamily Motor\+Driver\+::\+Motor\+Driver (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sleep,  }\item[{uint8\+\_\+t}]{IN1A,  }\item[{uint8\+\_\+t}]{IN2A,  }\item[{uint8\+\_\+t}]{n\+Fault }\end{DoxyParamCaption})}
+
+
+
+Motor driver class for a brushed DC motor. 
+
+This class drives motors using the arduino library and allows for complete control of the motor using PWM. 
+\begin{DoxyParams}{Parameters}
+{\em sleep} & This parameter represents the sleep pin on the motor driver breakout board. \\
+\hline
+{\em IN1A} & This parameter represents one of two motor wires?pins? that control the duty cycle and direction \\
+\hline
+{\em IN1A} & This parameter represents one of two motor wires?pins? that control the duty cycle and direction \\
+\hline
+{\em n\+Fault} & This parameter represents the n\+Fault pin on the motor driver board \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_motor_driver_ab7ef925c94ac19ccec5e6f7cd3d372d2}\label{class_motor_driver_ab7ef925c94ac19ccec5e6f7cd3d372d2}} 
+\index{MotorDriver@{MotorDriver}!disable@{disable}}
+\index{disable@{disable}!MotorDriver@{MotorDriver}}
+\doxysubsubsection{\texorpdfstring{disable()}{disable()}}
+{\footnotesize\ttfamily void Motor\+Driver\+::disable (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function disables the motors. 
+
+This function disables the motors by setting the sleep pin low \mbox{\Hypertarget{class_motor_driver_a191bb963050625ef0c43344476803d9e}\label{class_motor_driver_a191bb963050625ef0c43344476803d9e}} 
+\index{MotorDriver@{MotorDriver}!enable@{enable}}
+\index{enable@{enable}!MotorDriver@{MotorDriver}}
+\doxysubsubsection{\texorpdfstring{enable()}{enable()}}
+{\footnotesize\ttfamily void Motor\+Driver\+::enable (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function enables the motors. 
+
+This function enables motor dring by setting the sleep pin high \mbox{\Hypertarget{class_motor_driver_a2c8f5a75059f2a089d066f64a45d6972}\label{class_motor_driver_a2c8f5a75059f2a089d066f64a45d6972}} 
+\index{MotorDriver@{MotorDriver}!set\_duty2@{set\_duty2}}
+\index{set\_duty2@{set\_duty2}!MotorDriver@{MotorDriver}}
+\doxysubsubsection{\texorpdfstring{set\_duty2()}{set\_duty2()}}
+{\footnotesize\ttfamily void Motor\+Driver\+::set\+\_\+duty2 (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{duty2 }\end{DoxyParamCaption})}
+
+
+
+This function sets the duty cycle of the motor. 
+
+This function uses PWM to control the speed of the motor 
+\begin{DoxyParams}{Parameters}
+{\em duty2} & This parameter represents the requeested duty cycle to be handed to the motor \\
+\hline
+\end{DoxyParams}
+Set duty limits to -\/100\% and 100\%
+
+Set duty by translating duty cycle into a 16-\/bit value
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Motor\+Driver.\+h\item 
+\mbox{\hyperlink{_motor_driver_8cpp}{Motor\+Driver.\+cpp}}\end{DoxyCompactItemize}

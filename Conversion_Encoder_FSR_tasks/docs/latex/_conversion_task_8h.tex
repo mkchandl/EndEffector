@@ -1,0 +1,45 @@
+\hypertarget{_conversion_task_8h}{}\doxysection{Conversion\+Task.\+h File Reference}
+\label{_conversion_task_8h}\index{ConversionTask.h@{ConversionTask.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_conversion_task_8h_a01f6841bb42ed4a0b1d8705e41f6fe05}{task\+\_\+conversion}} (void $\ast$p\+\_\+params)
+\begin{DoxyCompactList}\small\item\em Task which provides motors with duty cycles to match the computer-\/vision hand. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains headers for a task that takes the x,y coords of a finger pointer and then converts it into the theta desired by the motor
+
+\begin{DoxyAuthor}{Author}
+Michelle Chandler and Cole Andrews 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18 Nov 2021 Original file 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_conversion_task_8h_a01f6841bb42ed4a0b1d8705e41f6fe05}\label{_conversion_task_8h_a01f6841bb42ed4a0b1d8705e41f6fe05}} 
+\index{ConversionTask.h@{ConversionTask.h}!task\_conversion@{task\_conversion}}
+\index{task\_conversion@{task\_conversion}!ConversionTask.h@{ConversionTask.h}}
+\doxysubsubsection{\texorpdfstring{task\_conversion()}{task\_conversion()}}
+{\footnotesize\ttfamily void task\+\_\+conversion (\begin{DoxyParamCaption}\item[{void $\ast$}]{p\+\_\+params }\end{DoxyParamCaption})}
+
+
+
+Task which provides motors with duty cycles to match the computer-\/vision hand. 
+
+This task calls a number of classes including the motor driver, serial, and \mbox{\hyperlink{class_f_s_r}{FSR}} task in order to grab the coordinates provided by the computer-\/vision program running on the desktop and converting them into the angular displacement of the first joint of the finger. The equation that was used for this was found here\+: \href{https://www.researchgate.net/publication/290740307_A_Three_Finger_Tendon_Driven_Robotic_Hand_Design_and_Its_Kinematics_Model}{\texttt{ https\+://www.\+researchgate.\+net/publication/290740307\+\_\+\+A\+\_\+\+Three\+\_\+\+Finger\+\_\+\+Tendon\+\_\+\+Driven\+\_\+\+Robotic\+\_\+\+Hand\+\_\+\+Design\+\_\+and\+\_\+\+Its\+\_\+\+Kinematics\+\_\+\+Model}} This angular displacement is translated into angular velocity, fed through a controller, converted to duty cycle using a linear relationship between 100\% duty and max motor speed. This duty cycle is fed to the motors 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+param} & This parameter was added to stop a compiler error \\
+\hline
+\end{DoxyParams}
+create motor objects
+
+disable motors to ensure no undesired motor movement
+
+enable both motors
+
+create serial object
+
+Check to make sure the fsr hasnt triggered a shutoff

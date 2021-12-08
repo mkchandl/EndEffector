@@ -1,0 +1,44 @@
+\hypertarget{_f_s_r_task_8cpp}{}\doxysection{FSRTask.\+cpp File Reference}
+\label{_f_s_r_task_8cpp}\index{FSRTask.cpp@{FSRTask.cpp}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Print\+Stream.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}shares.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}FSRTask.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}FSR.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_f_s_r_task_8cpp_a1e881530c88e71f28d320b3ad2b6644a}{FSRTask}} (void $\ast$p\+\_\+params)
+\begin{DoxyCompactList}\small\item\em Task which monitors the \mbox{\hyperlink{class_f_s_r}{FSR}} attached to the tip of the finger. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the method for a task that monitors the \mbox{\hyperlink{class_f_s_r}{FSR}} and writes to a shared variable called motor\+\_\+shutoff, which is shared with the conversion task.
+
+\begin{DoxyAuthor}{Author}
+Michelle Chandler and Cole Andrews 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+24 Nov 2021 Original file 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_f_s_r_task_8cpp_a1e881530c88e71f28d320b3ad2b6644a}\label{_f_s_r_task_8cpp_a1e881530c88e71f28d320b3ad2b6644a}} 
+\index{FSRTask.cpp@{FSRTask.cpp}!FSRTask@{FSRTask}}
+\index{FSRTask@{FSRTask}!FSRTask.cpp@{FSRTask.cpp}}
+\doxysubsubsection{\texorpdfstring{FSRTask()}{FSRTask()}}
+{\footnotesize\ttfamily void FSRTask (\begin{DoxyParamCaption}\item[{void $\ast$}]{p\+\_\+params }\end{DoxyParamCaption})}
+
+
+
+Task which monitors the \mbox{\hyperlink{class_f_s_r}{FSR}} attached to the tip of the finger. 
+
+This task monitors the \mbox{\hyperlink{class_f_s_r}{FSR}} and writes to a shared motor shutoff variable if the pressure exceeds a certain range. 
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+param} & This parameter was added to stop a compiler error \\
+\hline
+\end{DoxyParams}
+Create \mbox{\hyperlink{class_f_s_r}{FSR}} object
+
+Initialize the motor shutoff variable

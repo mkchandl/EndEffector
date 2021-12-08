@@ -1,0 +1,137 @@
+\hypertarget{class_serial_comm}{}\doxysection{Serial\+Comm Class Reference}
+\label{class_serial_comm}\index{SerialComm@{SerialComm}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_serial_comm_a3ead369a6dc5a4231139657de00441cc}{Serial\+Comm}} (void)
+\begin{DoxyCompactList}\small\item\em Constructor for the serial comm class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_serial_comm_a0afe5d31a1cc1ae216e705ebdd3e1a5f}{read}} (void)
+\begin{DoxyCompactList}\small\item\em Method which reads from serial port. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_serial_comm_a016c4a0df83655924695907a0b4645a5}\label{class_serial_comm_a016c4a0df83655924695907a0b4645a5}} 
+void {\bfseries write} (void)
+\item 
+int32\+\_\+t \mbox{\hyperlink{class_serial_comm_af4b4acd390caaf51de399c5fbfb7b614}{return\+\_\+x1}} (void)
+\begin{DoxyCompactList}\small\item\em Method which returns the x coordinate for motor 1. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{class_serial_comm_a02814b8844ad2741f1d7f19f69806b53}{return\+\_\+y1}} (void)
+\begin{DoxyCompactList}\small\item\em Method which returns the y coordinate for motor 1. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{class_serial_comm_adfeb7314ee9a7b6ba6b39009fb2d9856}{return\+\_\+t1}} (void)
+\begin{DoxyCompactList}\small\item\em Method which returns the time stamp for motor 1. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{class_serial_comm_aee23eb4f5e61cd12f59fe0d413dd032d}{return\+\_\+x2}} (void)
+\begin{DoxyCompactList}\small\item\em Method which returns the x coordinate for motor 2. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{class_serial_comm_aa04086a8c5fb86988d7e985944265ef9}{return\+\_\+y2}} (void)
+\begin{DoxyCompactList}\small\item\em Method which returns the y coordinate for motor 2. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{class_serial_comm_a6310dfa35fa2c41b4dca2c39dccfdb15}{return\+\_\+t2}} (void)
+\begin{DoxyCompactList}\small\item\em Method which returns the time stamp for motor 2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_serial_comm_ae9468e852da093141cc8bda9988c426c}\label{class_serial_comm_ae9468e852da093141cc8bda9988c426c}} 
+int32\+\_\+t {\bfseries x1}
+\item 
+\mbox{\Hypertarget{class_serial_comm_a0f29bd12fe8fc1ea6941bcc6e0f349b0}\label{class_serial_comm_a0f29bd12fe8fc1ea6941bcc6e0f349b0}} 
+int32\+\_\+t {\bfseries y1}
+\item 
+\mbox{\Hypertarget{class_serial_comm_a93653a09037c2af1ccff6c0f0a5c6362}\label{class_serial_comm_a93653a09037c2af1ccff6c0f0a5c6362}} 
+int32\+\_\+t {\bfseries t1}
+\item 
+\mbox{\Hypertarget{class_serial_comm_a2c4dc2e829d045c12cf1ff483c20d722}\label{class_serial_comm_a2c4dc2e829d045c12cf1ff483c20d722}} 
+int32\+\_\+t {\bfseries x2}
+\item 
+\mbox{\Hypertarget{class_serial_comm_a097632cb4a1f549c148afd7c4e3431b4}\label{class_serial_comm_a097632cb4a1f549c148afd7c4e3431b4}} 
+int32\+\_\+t {\bfseries y2}
+\item 
+\mbox{\Hypertarget{class_serial_comm_a7f4f71f8e9fabcad9931b87ec5de414e}\label{class_serial_comm_a7f4f71f8e9fabcad9931b87ec5de414e}} 
+int32\+\_\+t {\bfseries t2}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_serial_comm_a3ead369a6dc5a4231139657de00441cc}\label{class_serial_comm_a3ead369a6dc5a4231139657de00441cc}} 
+\index{SerialComm@{SerialComm}!SerialComm@{SerialComm}}
+\index{SerialComm@{SerialComm}!SerialComm@{SerialComm}}
+\doxysubsubsection{\texorpdfstring{SerialComm()}{SerialComm()}}
+{\footnotesize\ttfamily Serial\+Comm\+::\+Serial\+Comm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for the serial comm class. 
+
+This constructor intializes the class object variables 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_serial_comm_a0afe5d31a1cc1ae216e705ebdd3e1a5f}\label{class_serial_comm_a0afe5d31a1cc1ae216e705ebdd3e1a5f}} 
+\index{SerialComm@{SerialComm}!read@{read}}
+\index{read@{read}!SerialComm@{SerialComm}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily void Serial\+Comm\+::read (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Method which reads from serial port. 
+
+This method reads from the serial port, determines which finger the coords and time stamp belong to, and then saves them to the appropriate variables \mbox{\Hypertarget{class_serial_comm_adfeb7314ee9a7b6ba6b39009fb2d9856}\label{class_serial_comm_adfeb7314ee9a7b6ba6b39009fb2d9856}} 
+\index{SerialComm@{SerialComm}!return\_t1@{return\_t1}}
+\index{return\_t1@{return\_t1}!SerialComm@{SerialComm}}
+\doxysubsubsection{\texorpdfstring{return\_t1()}{return\_t1()}}
+{\footnotesize\ttfamily int32\+\_\+t Serial\+Comm\+::return\+\_\+t1 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Method which returns the time stamp for motor 1. 
+
+This method returns the most recently updated time stamp for motor 1 \mbox{\Hypertarget{class_serial_comm_a6310dfa35fa2c41b4dca2c39dccfdb15}\label{class_serial_comm_a6310dfa35fa2c41b4dca2c39dccfdb15}} 
+\index{SerialComm@{SerialComm}!return\_t2@{return\_t2}}
+\index{return\_t2@{return\_t2}!SerialComm@{SerialComm}}
+\doxysubsubsection{\texorpdfstring{return\_t2()}{return\_t2()}}
+{\footnotesize\ttfamily int32\+\_\+t Serial\+Comm\+::return\+\_\+t2 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Method which returns the time stamp for motor 2. 
+
+This method returns the most recently updated time stamp for motor 2 \mbox{\Hypertarget{class_serial_comm_af4b4acd390caaf51de399c5fbfb7b614}\label{class_serial_comm_af4b4acd390caaf51de399c5fbfb7b614}} 
+\index{SerialComm@{SerialComm}!return\_x1@{return\_x1}}
+\index{return\_x1@{return\_x1}!SerialComm@{SerialComm}}
+\doxysubsubsection{\texorpdfstring{return\_x1()}{return\_x1()}}
+{\footnotesize\ttfamily int32\+\_\+t Serial\+Comm\+::return\+\_\+x1 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Method which returns the x coordinate for motor 1. 
+
+This method returns the most recently updated x-\/coordinate for motor 1 \mbox{\Hypertarget{class_serial_comm_aee23eb4f5e61cd12f59fe0d413dd032d}\label{class_serial_comm_aee23eb4f5e61cd12f59fe0d413dd032d}} 
+\index{SerialComm@{SerialComm}!return\_x2@{return\_x2}}
+\index{return\_x2@{return\_x2}!SerialComm@{SerialComm}}
+\doxysubsubsection{\texorpdfstring{return\_x2()}{return\_x2()}}
+{\footnotesize\ttfamily int32\+\_\+t Serial\+Comm\+::return\+\_\+x2 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Method which returns the x coordinate for motor 2. 
+
+This method returns the most recently updated x-\/coordinate for motor 2 \mbox{\Hypertarget{class_serial_comm_a02814b8844ad2741f1d7f19f69806b53}\label{class_serial_comm_a02814b8844ad2741f1d7f19f69806b53}} 
+\index{SerialComm@{SerialComm}!return\_y1@{return\_y1}}
+\index{return\_y1@{return\_y1}!SerialComm@{SerialComm}}
+\doxysubsubsection{\texorpdfstring{return\_y1()}{return\_y1()}}
+{\footnotesize\ttfamily int32\+\_\+t Serial\+Comm\+::return\+\_\+y1 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Method which returns the y coordinate for motor 1. 
+
+This method returns the most recently updated y-\/coordinate for motor 1 \mbox{\Hypertarget{class_serial_comm_aa04086a8c5fb86988d7e985944265ef9}\label{class_serial_comm_aa04086a8c5fb86988d7e985944265ef9}} 
+\index{SerialComm@{SerialComm}!return\_y2@{return\_y2}}
+\index{return\_y2@{return\_y2}!SerialComm@{SerialComm}}
+\doxysubsubsection{\texorpdfstring{return\_y2()}{return\_y2()}}
+{\footnotesize\ttfamily int32\+\_\+t Serial\+Comm\+::return\+\_\+y2 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Method which returns the y coordinate for motor 2. 
+
+This method returns the most recently updated y-\/coordinate for motor 2 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_serial_comm_8h}{Serial\+Comm.\+h}}\item 
+\mbox{\hyperlink{_serial_comm_8cpp}{Serial\+Comm.\+cpp}}\end{DoxyCompactItemize}
